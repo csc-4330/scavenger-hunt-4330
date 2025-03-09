@@ -218,19 +218,19 @@ class HintPageState extends State<HintPage> {
   @override
   Widget build(BuildContext context) {
     
-    final Color timerBorderColor = Theme.of(context).colorScheme.secondary;
+    final Color timerBorderColor = Theme.of(context).colorScheme.secondary; 
     double progressValue = (currentIndex + 1) / imagePaths.length;
 
-    return Scaffold(
+    return Scaffold( 
       appBar: AppBar(
         title: const Text('Scavenger Hunt'),
-        actions: [
+        actions: [ 
           IconButton(
-            icon: Icon(Icons.home), 
+            icon: Icon(Icons.home),  
             onPressed: () {
-              cancelTimer();
+              cancelTimer(); 
               Navigator.pushReplacementNamed(context, '/');
-            },
+            }, 
           ),
           IconButton(
             icon: Icon(Icons.settings), 
