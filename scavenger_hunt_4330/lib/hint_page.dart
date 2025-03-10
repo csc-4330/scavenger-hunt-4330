@@ -28,11 +28,11 @@ class HintPageState extends State<HintPage> {
   "What year did Patrick F. Taylor pass away?"
   ];
 
-
   final List<String> expectedAnswers = [
     '101010010', '1154', '9', '11', '1936',
     '88', 'DC15S', '3rd', '3325', '2004'
   ];
+
 
   int currentIndex = 0;
   final TextEditingController _controller = TextEditingController();
@@ -178,14 +178,13 @@ void nextPage() {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 children: [
-                  const SizedBox(height: 50), // Moves images further down
                   Image.asset(
                     imagePaths[currentIndex],
-                    width: 450, // Increased size
-                    height: 450, // Increased size
+                    width: 450,
+                    height: 450,
                     fit: BoxFit.cover,
                   ),
-                  const SizedBox(height: 50), // More spacing
+                  const SizedBox(height: 30),
                   if (widget.difficulty != "casual")
                     Container(
                       padding: const EdgeInsets.all(8.0),
@@ -198,13 +197,13 @@ void nextPage() {
                         style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                  const SizedBox(height: 50), // More spacing
+                  const SizedBox(height: 30),
                   Text(
                     prompts[currentIndex],
                     style: const TextStyle(fontSize: 18),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 50), // More spacing
+                  const SizedBox(height: 30),
                   TextField(
                     controller: _controller,
                     onChanged: _checkAnswer,
@@ -213,7 +212,7 @@ void nextPage() {
                       hintText: 'Enter your answer here',
                     ),
                   ),
-                  const SizedBox(height: 50), // More spacing
+                  const SizedBox(height: 30),
                 ],
               ),
             ),
