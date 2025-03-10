@@ -62,6 +62,7 @@ flutter:
     - assets/image8.jpg
     - assets/image9.jpg
     - assets/image10.jpg
+    - assets/pft.jpg
     
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -462,5 +463,5 @@ flutter:
 
 
 
-  
+
   # see https://flutter.dev/to/font-from-package

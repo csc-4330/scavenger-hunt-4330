@@ -180,8 +180,8 @@ void nextPage() {
                 children: [
                   Image.asset(
                     imagePaths[currentIndex],
-                    width: 450,
-                    height: 450,
+                    width: 400,
+                    height: 400,
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 30),
