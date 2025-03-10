@@ -1,0 +1,194 @@
+// screens/hint_page.dart
+import 'dart:async';
+import 'package:flutter/material.dart';
+
+class HintPage extends StatefulWidget {
+  final String difficulty;
+  const HintPage({super.key, required this.difficulty});
+
+  @override
+  HintPageState createState() => HintPageState();
+}
+
+class HintPageState extends State<HintPage> {
+  final List<String> imagePaths =
+      List.generate(10, (index) => 'assets/image${index + 1}.jpg');
+
+  final List<String> prompts =
+      List.generate(10, (index) => 'Enter code for image ${index + 1}:');
+
+  final List<String> expectedAnswers = [
+    'code1', 'code2', 'code3', 'code4', 'code5',
+    'code6', 'code7', 'code8', 'code9', 'code10'
+  ];
+
+  int currentIndex = 0;
+  final TextEditingController _controller = TextEditingController();
+  bool isAnswerCorrect = false;
+  Timer? _timer;
+  int _timeLeft = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+
+  void startTimer() {
+    if (widget.difficulty == "casual") {
+      _timeLeft = 0;
+      return;
+    }
+    _timeLeft = widget.difficulty == "hard" ? 60 : 300;
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_timeLeft > 0) {
+        setState(() {
+          _timeLeft--;
+        });
+      } else {
+        timer.cancel();
+        Navigator.pushReplacementNamed(context, '/lost');
+      }
+    });
+  }
+
+  void cancelTimer() {
+    _timer?.cancel();
+  }
+
+  void nextPage() {
+    cancelTimer();
+    if (currentIndex < imagePaths.length - 1) {
+      setState(() {
+        currentIndex++;
+        _controller.clear();
+        isAnswerCorrect = false;
+      });
+      startTimer();
+    } else {
+      Navigator.pushReplacementNamed(context, '/');
+    }
+  }
+
+  void _checkAnswer(String value) {
+    if (value.trim().toLowerCase() ==
+        expectedAnswers[currentIndex].toLowerCase()) {
+      if (!isAnswerCorrect) {
+        setState(() {
+          isAnswerCorrect = true;
+        });
+        Future.delayed(const Duration(seconds: 1), () {
+          if (mounted &&
+              _controller.text.trim().toLowerCase() ==
+                  expectedAnswers[currentIndex].toLowerCase()) {
+            nextPage();
+          }
+        });
+      }
+    } else {
+      setState(() {
+        isAnswerCorrect = false;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    cancelTimer();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Color timerBorderColor = Theme.of(context).colorScheme.secondary;
+    double progressValue = (currentIndex + 1) / imagePaths.length;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Scavenger Hunt'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.home),
+            onPressed: () {
+              cancelTimer();
+              Navigator.pushReplacementNamed(context, '/');
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              cancelTimer();
+              Navigator.pushNamed(context, '/settings');
+            },
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(
+              height: 4,
+              child: TweenAnimationBuilder<double>(
+                tween: Tween<double>(begin: 0, end: progressValue),
+                duration: const Duration(milliseconds: 500),
+                builder: (context, value, child) {
+                  return LinearProgressIndicator(
+                    value: value,
+                    backgroundColor: Colors.grey[300],
+                    valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF46166B)),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                children: [
+                  Image.asset(
+                    imagePaths[currentIndex],
+                    width: 350,
+                    height: 350,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 30),
+                  if (widget.difficulty != "casual")
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: timerBorderColor),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Text(
+                        'Time Left: $_timeLeft seconds',
+                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  const SizedBox(height: 30),
+                  Text(
+                    prompts[currentIndex],
+                    style: const TextStyle(fontSize: 18),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 30),
+                  TextField(
+                    controller: _controller,
+                    onChanged: _checkAnswer,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter your answer here',
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
