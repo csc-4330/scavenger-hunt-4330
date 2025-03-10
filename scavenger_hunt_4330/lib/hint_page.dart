@@ -15,12 +15,23 @@ class HintPageState extends State<HintPage> {
   final List<String> imagePaths =
       List.generate(10, (index) => 'assets/image${index + 1}.jpg');
 
-  final List<String> prompts =
-      List.generate(10, (index) => 'Enter code for image ${index + 1}:');
+  final List<String> prompts = [
+  "What in the binary number that is written on the left wall of the atrium?",
+  "What is the room number for the BASF lab?",
+  "How many purple sponsor banners are on the sponsor wall?",
+  "How many wooden steps are there in the capstone stairs?",
+  "What year was the Tau Beta Pi LSU chapter founded?",
+  "What is the maximum occupancy at Panera Bread?",
+  "What follows OTP- at the distillery on the second floor?",
+  "What floor is Professor Shepherd's office on? (ex: 1st, 2nd, 3rd)",
+  "What is the room number of the Computer Science office in PFT?",
+  "What year did Patrick F. Taylor pass away?"
+  ];
+
 
   final List<String> expectedAnswers = [
-    'code1', 'code2', 'code3', 'code4', 'code5',
-    'code6', 'code7', 'code8', 'code9', 'code10'
+    '101010010', '1154', '9', '11', '1936',
+    '88', 'DC15S', '3rd', '3325', '2004'
   ];
 
   int currentIndex = 0;
@@ -167,13 +178,14 @@ void nextPage() {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 children: [
+                  const SizedBox(height: 50), // Moves images further down
                   Image.asset(
                     imagePaths[currentIndex],
-                    width: 350,
-                    height: 350,
+                    width: 450, // Increased size
+                    height: 450, // Increased size
                     fit: BoxFit.cover,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 50), // More spacing
                   if (widget.difficulty != "casual")
                     Container(
                       padding: const EdgeInsets.all(8.0),
@@ -186,13 +198,13 @@ void nextPage() {
                         style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 50), // More spacing
                   Text(
                     prompts[currentIndex],
                     style: const TextStyle(fontSize: 18),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 50), // More spacing
                   TextField(
                     controller: _controller,
                     onChanged: _checkAnswer,
@@ -201,7 +213,7 @@ void nextPage() {
                       hintText: 'Enter your answer here',
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 50), // More spacing
                 ],
               ),
             ),
