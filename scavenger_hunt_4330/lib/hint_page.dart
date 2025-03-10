@@ -16,16 +16,16 @@ class HintPageState extends State<HintPage> {
       List.generate(10, (index) => 'assets/image${index + 1}.jpg');
 
   final List<String> prompts = [
-  "What in the binary number that is written on the left wall of the atrium?",
-  "What is the room number for the BASF lab?",
-  "How many purple sponsor banners are on the sponsor wall?",
-  "How many wooden steps are there in the capstone stairs?",
-  "What year was the Tau Beta Pi LSU chapter founded?",
-  "What is the maximum occupancy at Panera Bread?",
-  "What follows OTP- at the distillery on the second floor?",
-  "What floor is Professor Shepherd's office on? (ex: 1st, 2nd, 3rd)",
-  "What is the room number of the Computer Science office in PFT?",
-  "What year did Patrick F. Taylor pass away?"
+    "What in the binary number that is written on the left wall of the atrium?",
+    "What is the room number for the BASF lab?",
+    "How many purple sponsor banners are on the sponsor wall?",
+    "How many wooden steps are there in the capstone stairs?",
+    "What year was the Tau Beta Pi LSU chapter founded?",
+    "What is the maximum occupancy at Panera Bread?",
+    "What follows OTP- at the distillery on the second floor?",
+    "What floor is Professor Shepherd's office on? (ex: 1st, 2nd, 3rd)",
+    "What is the room number of the Computer Science office in PFT?",
+    "What year did Patrick F. Taylor pass away?"
   ];
 
   final List<String> expectedAnswers = [
@@ -33,6 +33,19 @@ class HintPageState extends State<HintPage> {
     '88', 'DC15S', '3rd', '3325', '2004'
   ];
 
+  // New list of unique messages for the hint text page
+  final List<String> hintTextMessages = [
+    "The atrium of LSU’s Patrick F. Taylor Hall was designed to create a spacious, open atmosphere with an emphasis on natural light. Large windows and skylights fill the space with light, promoting a collaborative and inviting environment. The modern design uses materials like concrete, glass, and steel to connect the indoors with the outdoors, reflecting the building's focus on innovation and connection.",
+    "The BASF Lab in PFT is a research facility designed for students and faculty in the College of Engineering to conduct hands-on experiments and research in the field of chemical engineering. The lab is part of a partnership with BASF, a global chemical company, and is equipped with advanced technology and equipment to support research on chemical processes, sustainability, and other engineering innovations. It serves as a space for collaboration between university and industry, helping students gain practical experience.",
+    "The sponsor wall in Patrick F. Taylor Hall recognizes the contributions of companies and organizations that support LSU’s engineering programs, with banners prominently displaying their names.",
+    "The Capstone Stairs are an iconic part of the architectural design of the Patrick F. Taylor Hall, often serving as a striking feature that draws attention for both its functionality and aesthetic appeal.",
+    "Tau Beta Pi is the national engineering honor society, and the LSU chapter has a long history of honoring high-achieving engineering students, promoting the values of scholarship and service.",
+    "Panera Bread at LSU is a popular spot for students and faculty, offering a variety of delicious menu items. The commons outside provide an open space to enjoy food, unwind after class, or study with friends.",
+    "The OTP- term refers to a unique part of LSU’s distillery research area, where students and faculty explore cutting-edge chemical engineering processes.",
+    "Professor Shepherd’s office, located in the 3rd floor of the engineering building, is easily accessible to students. This is not to be confused with Daniel Shepherd's office, which is on the 2nd floor.",
+    "The Computer Science office in Patrick F. Taylor Hall is a central point for students in the program, providing academic resources, advising, and information about the latest developments in the field.",
+    "Patrick F. Taylor, a key figure in the development of LSU’s engineering school, was known for his generous contributions that helped shape the building and its programs into what they are today."
+  ];
 
   int currentIndex = 0;
   final TextEditingController _controller = TextEditingController();
@@ -65,41 +78,46 @@ class HintPageState extends State<HintPage> {
     });
   }
 
- void cancelTimer() {
+  void cancelTimer() {
     _timer?.cancel();
   }
- void showHintTextPage() {
+
+  void showHintTextPage() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => HintTextPage(onContinue: nextPage),
+        builder: (context) => HintTextPage(
+          hintTextMessage: hintTextMessages[currentIndex], // Pass the unique message
+          onContinue: nextPage,
+        ),
       ),
     );
   }
 
-void nextPage() {
-  cancelTimer();
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => HintTextPage(
-        onContinue: () {
-          Navigator.pop(context); // Close hint page
-          setState(() {
-            if (currentIndex < imagePaths.length - 1) {
-              currentIndex++;
-              _controller.clear();
-              isAnswerCorrect = false;
-            } else {
-              Navigator.pushReplacementNamed(context, '/');
-            }
-          });
-          startTimer();
-        },
+  void nextPage() {
+    cancelTimer();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HintTextPage(
+          hintTextMessage: hintTextMessages[currentIndex], // Pass the unique message
+          onContinue: () {
+            Navigator.pop(context); // Close hint page
+            setState(() {
+              if (currentIndex < imagePaths.length - 1) {
+                currentIndex++;
+                _controller.clear();
+                isAnswerCorrect = false;
+              } else {
+                Navigator.pushReplacementNamed(context, '/');
+              }
+            });
+            startTimer();
+          },
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   void _checkAnswer(String value) {
     if (value.trim().toLowerCase() ==
