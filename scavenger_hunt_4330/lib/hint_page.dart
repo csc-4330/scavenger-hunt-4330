@@ -1,6 +1,7 @@
 // screens/hint_page.dart
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'hint_text_page.dart';
 
 class HintPage extends StatefulWidget {
   final String difficulty;
@@ -53,23 +54,41 @@ class HintPageState extends State<HintPage> {
     });
   }
 
-  void cancelTimer() {
+ void cancelTimer() {
     _timer?.cancel();
   }
-
-  void nextPage() {
-    cancelTimer();
-    if (currentIndex < imagePaths.length - 1) {
-      setState(() {
-        currentIndex++;
-        _controller.clear();
-        isAnswerCorrect = false;
-      });
-      startTimer();
-    } else {
-      Navigator.pushReplacementNamed(context, '/');
-    }
+ void showHintTextPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HintTextPage(onContinue: nextPage),
+      ),
+    );
   }
+
+void nextPage() {
+  cancelTimer();
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => HintTextPage(
+        onContinue: () {
+          Navigator.pop(context); // Close hint page
+          setState(() {
+            if (currentIndex < imagePaths.length - 1) {
+              currentIndex++;
+              _controller.clear();
+              isAnswerCorrect = false;
+            } else {
+              Navigator.pushReplacementNamed(context, '/');
+            }
+          });
+          startTimer();
+        },
+      ),
+    ),
+  );
+}
 
   void _checkAnswer(String value) {
     if (value.trim().toLowerCase() ==
