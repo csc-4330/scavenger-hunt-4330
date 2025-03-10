@@ -83,41 +83,45 @@ class HintPageState extends State<HintPage> {
   }
 
   void showHintTextPage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HintTextPage(
-          hintTextMessage: hintTextMessages[currentIndex], // Pass the unique message
-          onContinue: nextPage,
-        ),
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => HintTextPage(
+        hintTextMessage: hintTextMessages[currentIndex], // Pass the unique message
+        imagePath: imagePaths[currentIndex], // ✅ Now passing the correct image!
+        onContinue: nextPage,
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   void nextPage() {
-    cancelTimer();
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HintTextPage(
-          hintTextMessage: hintTextMessages[currentIndex], // Pass the unique message
-          onContinue: () {
-            Navigator.pop(context); // Close hint page
-            setState(() {
-              if (currentIndex < imagePaths.length - 1) {
-                currentIndex++;
-                _controller.clear();
-                isAnswerCorrect = false;
-              } else {
-                Navigator.pushReplacementNamed(context, '/');
-              }
-            });
-            startTimer();
-          },
-        ),
+  cancelTimer();
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => HintTextPage(
+        hintTextMessage: hintTextMessages[currentIndex], // ✅ Pass the unique hint message
+        imagePath: imagePaths[currentIndex], // ✅ Pass the correct image path!
+        onContinue: () {
+          Navigator.pop(context); // Close hint page
+          setState(() {
+            if (currentIndex < imagePaths.length - 1) {
+              currentIndex++;
+              _controller.clear();
+              isAnswerCorrect = false;
+            } else {
+              Navigator.pushReplacementNamed(context, '/');
+            }
+          });
+          startTimer();
+        },
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   void _checkAnswer(String value) {
     if (value.trim().toLowerCase() ==
