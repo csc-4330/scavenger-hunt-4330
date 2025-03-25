@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'lsu_colors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,21 +9,18 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // Background Image
           Positioned.fill(
             child: Image.asset(
-              'assets/pft.jpg', // Ensure this file is in the assets folder and declared in pubspec.yaml
+              'assets/pft.jpg',
               fit: BoxFit.cover,
             ),
           ),
-
-          // Semi-transparent box containing the text and button
           Center(
             child: Container(
               padding: const EdgeInsets.all(24.0),
-              margin: const EdgeInsets.symmetric(horizontal: 20), // Adds space from edges
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.8), // Light overlay effect
+                color: LSUColors.white.withOpacity(0.85),
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
@@ -33,52 +31,34 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               child: Column(
-                mainAxisSize: MainAxisSize.min, // Adjusts to content size
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Game Title
-                  const Text(
+                  Text(
                     'Welcome to the PFT Scavenger Hunt!',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: LSUColors.purple,
                     ),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 20),
-
-                  // Instructions
-                  const Text(
+                  Text(
                     'Find the location of each of the pictures and enter the code to advance to the next location!',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.black87,
-                      fontWeight: FontWeight.w400,
+                      color: LSUColors.processBlack,
                     ),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 40),
-
-                  // Purple "Start" Button
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/hunt');
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple, // Purple background
-                      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      elevation: 4, // Adds a slight shadow
-                    ),
                     child: const Text(
                       'Start Game',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white, // White text for contrast
-                      ),
+                      style: TextStyle(fontSize: 20),
                     ),
                   ),
                 ],

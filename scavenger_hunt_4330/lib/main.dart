@@ -1,69 +1,82 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'hint_page.dart';
-import 'settings_page.dart';
-import 'lost_page.dart';
+import 'lsu_colors.dart';
+import 'home_tab.dart';
+import 'questions_tab.dart';
+import 'help_tab.dart';
 
 void main() {
   runApp(const ScavengerHuntApp());
 }
 
-class ScavengerHuntApp extends StatefulWidget {
+class ScavengerHuntApp extends StatelessWidget {
   const ScavengerHuntApp({super.key});
-
-  @override
-  State<ScavengerHuntApp> createState() => _ScavengerHuntAppState();
-}
-
-class _ScavengerHuntAppState extends State<ScavengerHuntApp> {
-  ThemeMode _themeMode = ThemeMode.light;
-  String _difficulty = "hard";
-
-  void toggleTheme(bool isDark) {
-    setState(() {
-      _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
-    });
-  }
-
-  void changeDifficulty(String newDifficulty) {
-    setState(() {
-      _difficulty = newDifficulty;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'PFT Scavenger Hunt',
       debugShowCheckedModeBanner: false,
-      title: 'Scavenger Hunt',
-      themeMode: _themeMode,
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFF5F5DC),
+        scaffoldBackgroundColor: LSUColors.white,
+        colorScheme: const ColorScheme(
           brightness: Brightness.light,
+          primary: LSUColors.purple,
+          onPrimary: LSUColors.white,
+          secondary: LSUColors.gold,
+          onSecondary: LSUColors.black,
+          error: Colors.red,
+          onError: LSUColors.white,
+          background: LSUColors.white,
+          onBackground: LSUColors.black,
+          surface: LSUColors.white,
+          onSurface: LSUColors.black,
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: LSUColors.purple,
+          foregroundColor: LSUColors.white,
         ),
       ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.purple,
-          brightness: Brightness.dark,
-        ),
-        scaffoldBackgroundColor: const Color(0xFF2E2E2E),
+      home: const MainScaffold(),
+    );
+  }
+}
+
+class MainScaffold extends StatefulWidget {
+  const MainScaffold({super.key});
+
+  @override
+  State<MainScaffold> createState() => _MainScaffoldState();
+}
+
+class _MainScaffoldState extends State<MainScaffold> {
+  int _currentIndex = 0;
+
+  final List<Widget> _tabs = [
+    const HomeTab(),
+    const QuestionsTab(),
+    const HelpTab(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _tabs[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        selectedItemColor: LSUColors.purple,
+        unselectedItemColor: LSUColors.lightGray,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.question_answer), label: 'Questions'),
+          BottomNavigationBarItem(icon: Icon(Icons.help_outline), label: 'Help'),
+        ],
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomePage(),
-        '/hunt': (context) => HintPage(difficulty: _difficulty),
-        '/settings': (context) => SettingsPage(
-              isDarkMode: _themeMode == ThemeMode.dark,
-              difficulty: _difficulty,
-              onThemeChanged: toggleTheme,
-              onDifficultyChanged: changeDifficulty,
-            ),
-        '/lost': (context) => const LostPage(),
-      },
     );
   }
 }

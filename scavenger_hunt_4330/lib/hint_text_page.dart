@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'lsu_colors.dart';
 
 class HintTextPage extends StatelessWidget {
   final VoidCallback onContinue;
@@ -20,51 +21,47 @@ class HintTextPage extends StatelessWidget {
           // Background Image
           Positioned.fill(
             child: Image.asset(
-              imagePath, // ✅ Correct background image
+              imagePath,
               fit: BoxFit.cover,
             ),
           ),
 
-          // Dark overlay for contrast
+          // Overlay
           Positioned.fill(
             child: Container(
-              color: Colors.black.withOpacity(0.35), // ✅ Lighter overlay to show more background
+              color: Colors.black.withOpacity(0.35),
             ),
           ),
 
           // Centered Content
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(16.0), // ✅ Less padding to show more background
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Text Container
                   Container(
-                    padding: const EdgeInsets.all(16), // ✅ Reduced padding to make box smaller
+                    padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.75), // ✅ More transparent box
+                      color: LSUColors.white.withOpacity(0.75),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
                       children: [
-                        // Hint Text - Smaller & Lighter
                         Text(
                           hintTextMessage,
                           style: const TextStyle(
-                            fontSize: 16, // ✅ Smaller text for better background visibility
-                            fontWeight: FontWeight.w500, // ✅ Slightly lighter weight
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
                             color: Colors.black87,
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        const SizedBox(height: 20), // ✅ Reduced spacing
-
-                        // Continue Button
+                        const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: onContinue,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.purple, // ✅ Keep it purple
+                            backgroundColor: LSUColors.purple,
                             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 32),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25),
@@ -74,9 +71,9 @@ class HintTextPage extends StatelessWidget {
                           child: const Text(
                             "Continue",
                             style: TextStyle(
-                              fontSize: 18, // ✅ Slightly smaller button text
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: LSUColors.white,
                             ),
                           ),
                         ),

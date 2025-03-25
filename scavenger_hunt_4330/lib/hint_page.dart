@@ -1,6 +1,6 @@
-// screens/hint_page.dart
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'lsu_colors.dart';
 import 'hint_text_page.dart';
 
 class HintPage extends StatefulWidget {
@@ -33,7 +33,6 @@ class HintPageState extends State<HintPage> {
     '88', 'DC15S', '3rd', '3325', '2004'
   ];
 
-  // New list of unique messages for the hint text page
   final List<String> hintTextMessages = [
     "The atrium of LSU’s Patrick F. Taylor Hall was designed to create a spacious, open atmosphere with an emphasis on natural light. Large windows and skylights fill the space with light, promoting a collaborative and inviting environment. The modern design uses materials like concrete, glass, and steel to connect the indoors with the outdoors, reflecting the building's focus on innovation and connection.",
     "The BASF Lab in PFT is a research facility designed for students and faculty in the College of Engineering to conduct hands-on experiments and research in the field of chemical engineering. The lab is part of a partnership with BASF, a global chemical company, and is equipped with advanced technology and equipment to support research on chemical processes, sustainability, and other engineering innovations. It serves as a space for collaboration between university and industry, helping students gain practical experience.",
@@ -50,78 +49,54 @@ class HintPageState extends State<HintPage> {
   int currentIndex = 0;
   final TextEditingController _controller = TextEditingController();
   bool isAnswerCorrect = false;
-  Timer? _timer;
-  int _timeLeft = 0;
+
+  // Timer? _timer;
+  // int _timeLeft = 0;
 
   @override
   void initState() {
     super.initState();
-    startTimer();
-  }
-
-  void startTimer() {
-    if (widget.difficulty == "casual") {
-      _timeLeft = 0;
-      return;
-    }
-    _timeLeft = widget.difficulty == "hard" ? 60 : 300;
-    _timer?.cancel();
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (_timeLeft > 0) {
-        setState(() {
-          _timeLeft--;
-        });
-      } else {
-        timer.cancel();
-        Navigator.pushReplacementNamed(context, '/lost');
-      }
-    });
-  }
-
-  void cancelTimer() {
-    _timer?.cancel();
+    // startTimer();
   }
 
   void showHintTextPage() {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => HintTextPage(
-        hintTextMessage: hintTextMessages[currentIndex], // Pass the unique message
-        imagePath: imagePaths[currentIndex], // ✅ Now passing the correct image!
-        onContinue: nextPage,
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HintTextPage(
+          hintTextMessage: hintTextMessages[currentIndex],
+          imagePath: imagePaths[currentIndex],
+          onContinue: nextPage,
+        ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 
   void nextPage() {
-  cancelTimer();
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => HintTextPage(
-        hintTextMessage: hintTextMessages[currentIndex], // ✅ Pass the unique hint message
-        imagePath: imagePaths[currentIndex], // ✅ Pass the correct image path!
-        onContinue: () {
-          Navigator.pop(context); // Close hint page
-          setState(() {
-            if (currentIndex < imagePaths.length - 1) {
-              currentIndex++;
-              _controller.clear();
-              isAnswerCorrect = false;
-            } else {
-              Navigator.pushReplacementNamed(context, '/');
-            }
-          });
-          startTimer();
-        },
+    // cancelTimer();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HintTextPage(
+          hintTextMessage: hintTextMessages[currentIndex],
+          imagePath: imagePaths[currentIndex],
+          onContinue: () {
+            Navigator.pop(context);
+            setState(() {
+              if (currentIndex < imagePaths.length - 1) {
+                currentIndex++;
+                _controller.clear();
+                isAnswerCorrect = false;
+              } else {
+                Navigator.pushReplacementNamed(context, '/');
+              }
+            });
+            // startTimer();
+          },
+        ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 
   void _checkAnswer(String value) {
     if (value.trim().toLowerCase() ==
@@ -147,14 +122,13 @@ class HintPageState extends State<HintPage> {
 
   @override
   void dispose() {
-    cancelTimer();
+    // cancelTimer();
     _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final Color timerBorderColor = Theme.of(context).colorScheme.secondary;
     double progressValue = (currentIndex + 1) / imagePaths.length;
 
     return Scaffold(
@@ -164,14 +138,14 @@ class HintPageState extends State<HintPage> {
           IconButton(
             icon: const Icon(Icons.home),
             onPressed: () {
-              cancelTimer();
+              // cancelTimer();
               Navigator.pushReplacementNamed(context, '/');
             },
           ),
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              cancelTimer();
+              // cancelTimer();
               Navigator.pushNamed(context, '/settings');
             },
           ),
@@ -189,8 +163,8 @@ class HintPageState extends State<HintPage> {
                 builder: (context, value, child) {
                   return LinearProgressIndicator(
                     value: value,
-                    backgroundColor: Colors.grey[300],
-                    valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF46166B)),
+                    backgroundColor: LSUColors.lightGray,
+                    valueColor: const AlwaysStoppedAnimation<Color>(LSUColors.corporatePurple),
                   );
                 },
               ),
@@ -207,18 +181,20 @@ class HintPageState extends State<HintPage> {
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 30),
-                  if (widget.difficulty != "casual")
-                    Container(
-                      padding: const EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: timerBorderColor),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: Text(
-                        'Time Left: $_timeLeft seconds',
-                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
+
+                  // if (widget.difficulty != "casual")
+                  //   Container(
+                  //     padding: const EdgeInsets.all(8.0),
+                  //     decoration: BoxDecoration(
+                  //       border: Border.all(color: LSUColors.gold),
+                  //       borderRadius: BorderRadius.circular(8.0),
+                  //     ),
+                  //     child: Text(
+                  //       'Time Left: $_timeLeft seconds',
+                  //       style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  //     ),
+                  //   ),
+
                   const SizedBox(height: 30),
                   Text(
                     prompts[currentIndex],
