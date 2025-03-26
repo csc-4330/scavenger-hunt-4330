@@ -1,222 +1,215 @@
-import 'dart:async';
-import 'package:flutter/material.dart';
-import 'lsu_colors.dart';
-import 'hint_text_page.dart';
+// import 'package:flutter/material.dart';
+// import 'lsu_colors.dart';
 
-class HintPage extends StatefulWidget {
-  final String difficulty;
-  const HintPage({super.key, required this.difficulty});
+// class HintPage extends StatefulWidget {
+//   final String difficulty;
+//   final int startIndex;
+//   final List<bool> answered;
+//   final void Function(int index) onAnswer;
+//   final VoidCallback onBack;
 
-  @override
-  HintPageState createState() => HintPageState();
-}
+//   const HintPage({
+//     super.key,
+//     required this.difficulty,
+//     required this.startIndex,
+//     required this.answered,
+//     required this.onAnswer,
+//     required this.onBack,
+//   });
 
-class HintPageState extends State<HintPage> {
-  final List<String> imagePaths =
-      List.generate(10, (index) => 'assets/image${index + 1}.jpg');
+//   @override
+//   State<HintPage> createState() => _HintPageState();
+// }
 
-  final List<String> prompts = [
-    "What in the binary number that is written on the left wall of the atrium?",
-    "What is the room number for the BASF lab?",
-    "How many purple sponsor banners are on the sponsor wall?",
-    "How many wooden steps are there in the capstone stairs?",
-    "What year was the Tau Beta Pi LSU chapter founded?",
-    "What is the maximum occupancy at Panera Bread?",
-    "What follows OTP- at the distillery on the second floor?",
-    "What floor is Professor Shepherd's office on? (ex: 1st, 2nd, 3rd)",
-    "What is the room number of the Computer Science office in PFT?",
-    "What year did Patrick F. Taylor pass away?"
-  ];
+// class _HintPageState extends State<HintPage> {
+//   final List<String> imagePaths =
+//       List.generate(10, (i) => 'assets/image${i + 1}.jpg');
 
-  final List<String> expectedAnswers = [
-    '101010010', '1154', '9', '11', '1936',
-    '88', 'DC15S', '3rd', '3325', '2004'
-  ];
+//   final List<String> prompts = [
+//     "What is the binary number on the left wall of the atrium?",
+//     "What is the room number for the BASF lab?",
+//     "How many purple sponsor banners are on the sponsor wall?",
+//     "How many wooden steps are there in the capstone stairs?",
+//     "What year was the Tau Beta Pi LSU chapter founded?",
+//     "What is the maximum occupancy at Panera Bread?",
+//     "What follows OTP- at the distillery on the second floor?",
+//     "What floor is Professor Shepherd's office on?",
+//     "What is the room number of the Computer Science office in PFT?",
+//     "What year did Patrick F. Taylor pass away?"
+//   ];
 
-  final List<String> hintTextMessages = [
-    "The atrium of LSU’s Patrick F. Taylor Hall was designed to create a spacious, open atmosphere with an emphasis on natural light. Large windows and skylights fill the space with light, promoting a collaborative and inviting environment. The modern design uses materials like concrete, glass, and steel to connect the indoors with the outdoors, reflecting the building's focus on innovation and connection.",
-    "The BASF Lab in PFT is a research facility designed for students and faculty in the College of Engineering to conduct hands-on experiments and research in the field of chemical engineering. The lab is part of a partnership with BASF, a global chemical company, and is equipped with advanced technology and equipment to support research on chemical processes, sustainability, and other engineering innovations. It serves as a space for collaboration between university and industry, helping students gain practical experience.",
-    "The sponsor wall in Patrick F. Taylor Hall recognizes the contributions of companies and organizations that support LSU’s engineering programs, with banners prominently displaying their names.",
-    "The Capstone Stairs are an iconic part of the architectural design of the Patrick F. Taylor Hall, often serving as a striking feature that draws attention for both its functionality and aesthetic appeal.",
-    "Tau Beta Pi is the national engineering honor society, and the LSU chapter has a long history of honoring high-achieving engineering students, promoting the values of scholarship and service.",
-    "Panera Bread at LSU is a popular spot for students and faculty, offering a variety of delicious menu items. The commons outside provide an open space to enjoy food, unwind after class, or study with friends.",
-    "The OTP- term refers to a unique part of LSU’s distillery research area, where students and faculty explore cutting-edge chemical engineering processes.",
-    "Professor Shepherd’s office, located in the 3rd floor of the engineering building, is easily accessible to students. This is not to be confused with Daniel Shepherd's office, which is on the 2nd floor.",
-    "The Computer Science office in Patrick F. Taylor Hall is a central point for students in the program, providing academic resources, advising, and information about the latest developments in the field.",
-    "Patrick F. Taylor, a key figure in the development of LSU’s engineering school, was known for his generous contributions that helped shape the building and its programs into what they are today."
-  ];
+//   final List<String> expectedAnswers = [
+//     '101010010', '1154', '9', '11', '1936',
+//     '88', 'DC15S', '3rd', '3325', '2004'
+//   ];
 
-  int currentIndex = 0;
-  final TextEditingController _controller = TextEditingController();
-  bool isAnswerCorrect = false;
+//   final List<String> locationInfo = [
+//     "The atrium was designed to be bright and collaborative with open light-filled spaces.",
+//     "The BASF lab supports chemical engineering experiments and student research.",
+//     "The sponsor wall highlights companies that support LSU Engineering.",
+//     "The Capstone Stairs are an architectural focal point of PFT Hall.",
+//     "Tau Beta Pi is an engineering honor society, founded at LSU in 1936.",
+//     "Panera Bread is a common student hangout spot with posted occupancy info.",
+//     "The distillery houses advanced chemical engineering research equipment.",
+//     "Prof. Shepherd's office is on the 3rd floor — don’t mix it up!",
+//     "The CS office in PFT offers advising and departmental resources.",
+//     "Patrick F. Taylor’s legacy lives on in the engineering program."
+//   ];
 
-  // Timer? _timer;
-  // int _timeLeft = 0;
+//   int currentIndex = 0;
+//   final TextEditingController _controller = TextEditingController();
+//   bool showLocationInfo = false;
+//   bool? submissionCorrect;
 
-  @override
-  void initState() {
-    super.initState();
-    // startTimer();
-  }
+//   @override
+//   void initState() {
+//     super.initState();
+//     currentIndex = widget.startIndex;
+//     showLocationInfo = widget.answered[currentIndex];
+//   }
 
-  void showHintTextPage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HintTextPage(
-          hintTextMessage: hintTextMessages[currentIndex],
-          imagePath: imagePaths[currentIndex],
-          onContinue: nextPage,
-        ),
-      ),
-    );
-  }
+//   void _submitAnswer() {
+//     final input = _controller.text.trim().toLowerCase();
+//     final correct = expectedAnswers[currentIndex].toLowerCase();
 
-  void nextPage() {
-    // cancelTimer();
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HintTextPage(
-          hintTextMessage: hintTextMessages[currentIndex],
-          imagePath: imagePaths[currentIndex],
-          onContinue: () {
-            Navigator.pop(context);
-            setState(() {
-              if (currentIndex < imagePaths.length - 1) {
-                currentIndex++;
-                _controller.clear();
-                isAnswerCorrect = false;
-              } else {
-                Navigator.pushReplacementNamed(context, '/');
-              }
-            });
-            // startTimer();
-          },
-        ),
-      ),
-    );
-  }
+//     setState(() {
+//       submissionCorrect = input == correct;
+//       if (submissionCorrect == true) {
+//         showLocationInfo = true;
+//       }
+//     });
+//   }
 
-  void _checkAnswer(String value) {
-    if (value.trim().toLowerCase() ==
-        expectedAnswers[currentIndex].toLowerCase()) {
-      if (!isAnswerCorrect) {
-        setState(() {
-          isAnswerCorrect = true;
-        });
-        Future.delayed(const Duration(seconds: 1), () {
-          if (mounted &&
-              _controller.text.trim().toLowerCase() ==
-                  expectedAnswers[currentIndex].toLowerCase()) {
-            nextPage();
-          }
-        });
-      }
-    } else {
-      setState(() {
-        isAnswerCorrect = false;
-      });
-    }
-  }
+//   void _nextQuestion() {
+//     widget.onAnswer(currentIndex);
 
-  @override
-  void dispose() {
-    // cancelTimer();
-    _controller.dispose();
-    super.dispose();
-  }
+//     final next = widget.answered.indexOf(false);
+//     if (next != -1 && next != currentIndex) {
+//       Navigator.pushReplacement(
+//         context,
+//         MaterialPageRoute(
+//           builder: (context) => HintPage(
+//             difficulty: widget.difficulty,
+//             startIndex: next,
+//             answered: widget.answered,
+//             onAnswer: widget.onAnswer,
+//             onBack: widget.onBack,
+//           ),
+//         ),
+//       );
+//     } else {
+//       widget.onBack(); // All questions done, return to list
+//     }
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    double progressValue = (currentIndex + 1) / imagePaths.length;
+//   @override
+//   Widget build(BuildContext context) {
+//     double progress = (currentIndex + 1) / 10;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Scavenger Hunt'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.home),
-            onPressed: () {
-              // cancelTimer();
-              Navigator.pushReplacementNamed(context, '/');
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              // cancelTimer();
-              Navigator.pushNamed(context, '/settings');
-            },
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              height: 4,
-              child: TweenAnimationBuilder<double>(
-                tween: Tween<double>(begin: 0, end: progressValue),
-                duration: const Duration(milliseconds: 500),
-                builder: (context, value, child) {
-                  return LinearProgressIndicator(
-                    value: value,
-                    backgroundColor: LSUColors.lightGray,
-                    valueColor: const AlwaysStoppedAnimation<Color>(LSUColors.corporatePurple),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                children: [
-                  Image.asset(
-                    imagePaths[currentIndex],
-                    width: 400,
-                    height: 400,
-                    fit: BoxFit.cover,
-                  ),
-                  const SizedBox(height: 30),
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(showLocationInfo
+//             ? "Location Info"
+//             : "Question ${currentIndex + 1}"),
+//         leading: IconButton(
+//           icon: const Icon(Icons.arrow_back),
+//           onPressed: widget.onBack,
+//         ),
+//       ),
+//       body: SingleChildScrollView(
+//         padding: const EdgeInsets.all(16),
+//         child: Column(
+//           children: [
+//             // Progress Bar
+//             Column(
+//               children: [
+//                 Text(
+//                   "Progress: Question ${currentIndex + 1} of 10",
+//                   style: const TextStyle(fontWeight: FontWeight.bold),
+//                 ),
+//                 const SizedBox(height: 4),
+//                 LinearProgressIndicator(
+//                   value: progress,
+//                   backgroundColor: LSUColors.lightGray,
+//                   color: LSUColors.purple,
+//                   minHeight: 6,
+//                 ),
+//               ],
+//             ),
+//             const SizedBox(height: 24),
 
-                  // if (widget.difficulty != "casual")
-                  //   Container(
-                  //     padding: const EdgeInsets.all(8.0),
-                  //     decoration: BoxDecoration(
-                  //       border: Border.all(color: LSUColors.gold),
-                  //       borderRadius: BorderRadius.circular(8.0),
-                  //     ),
-                  //     child: Text(
-                  //       'Time Left: $_timeLeft seconds',
-                  //       style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  //     ),
-                  //   ),
+//             Image.asset(
+//               imagePaths[currentIndex],
+//               width: double.infinity,
+//               height: 300,
+//               fit: BoxFit.cover,
+//             ),
+//             const SizedBox(height: 24),
 
-                  const SizedBox(height: 30),
-                  Text(
-                    prompts[currentIndex],
-                    style: const TextStyle(fontSize: 18),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 30),
-                  TextField(
-                    controller: _controller,
-                    onChanged: _checkAnswer,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter your answer here',
-                    ),
-                  ),
-                  const SizedBox(height: 30),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//             if (showLocationInfo)
+//               Container(
+//                 padding: const EdgeInsets.all(16),
+//                 decoration: BoxDecoration(
+//                   color: LSUColors.white,
+//                   borderRadius: BorderRadius.circular(12),
+//                   border: Border.all(color: LSUColors.purple, width: 2),
+//                 ),
+//                 child: Text(
+//                   locationInfo[currentIndex],
+//                   style: const TextStyle(fontSize: 16),
+//                   textAlign: TextAlign.center,
+//                 ),
+//               )
+//             else ...[
+//               Text(
+//                 prompts[currentIndex],
+//                 style: const TextStyle(fontSize: 18),
+//                 textAlign: TextAlign.center,
+//               ),
+//               const SizedBox(height: 16),
+//               TextField(
+//                 controller: _controller,
+//                 decoration: const InputDecoration(
+//                   border: OutlineInputBorder(),
+//                   hintText: 'Enter your answer here',
+//                 ),
+//               ),
+//               const SizedBox(height: 16),
+//               ElevatedButton(
+//                 onPressed: _submitAnswer,
+//                 child: const Text("Submit"),
+//               ),
+//               const SizedBox(height: 12),
+//               if (submissionCorrect == true)
+//                 const Text(
+//                   "Correct!",
+//                   style: TextStyle(
+//                     color: Colors.green,
+//                     fontWeight: FontWeight.bold,
+//                     fontSize: 16,
+//                   ),
+//                 )
+//               else if (submissionCorrect == false)
+//                 const Text(
+//                   "Incorrect. Try again.",
+//                   style: TextStyle(
+//                     color: Colors.red,
+//                     fontWeight: FontWeight.bold,
+//                     fontSize: 16,
+//                   ),
+//                 ),
+//             ],
+
+//             const SizedBox(height: 24),
+
+//             if (showLocationInfo)
+//               ElevatedButton(
+//                 onPressed: _nextQuestion,
+//                 child: const Text("Next Question"),
+//               ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

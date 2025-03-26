@@ -4,24 +4,61 @@ import 'home_tab.dart';
 import 'questions_tab.dart';
 import 'help_tab.dart';
 
-// Question pages
-import 'question_pages/question1_page.dart';
-import 'question_pages/question2_page.dart';
-import 'question_pages/question3_page.dart';
-import 'question_pages/question4_page.dart';
-import 'question_pages/question5_page.dart';
-import 'question_pages/question6_page.dart';
-import 'question_pages/question7_page.dart';
-import 'question_pages/question8_page.dart';
-import 'question_pages/question9_page.dart';
-import 'question_pages/question10_page.dart';
-
 void main() {
   runApp(const ScavengerHuntApp());
 }
 
-class ScavengerHuntApp extends StatelessWidget {
+class ScavengerHuntApp extends StatefulWidget {
   const ScavengerHuntApp({super.key});
+
+  @override
+  State<ScavengerHuntApp> createState() => _ScavengerHuntAppState();
+}
+
+class _ScavengerHuntAppState extends State<ScavengerHuntApp> {
+  int _currentTabIndex = 0;
+  List<bool> answered = List.generate(10, (_) => false);
+  int? currentQuestionIndex;
+
+  void setTabIndex(int index) {
+    setState(() {
+      _currentTabIndex = index;
+      if (_currentTabIndex == 1 && currentQuestionIndex == null) {
+        // Only reset to list view if we’re not actively viewing a question
+        currentQuestionIndex = null;
+      }
+    });
+  }
+
+  void markAnswered(int index) {
+    setState(() {
+      answered[index] = true;
+      final next = answered.indexOf(false);
+      if (next != -1 && next != index) {
+        currentQuestionIndex = next;
+      } else {
+        currentQuestionIndex = null;
+      }
+    });
+  }
+
+  void openQuestion(int index) {
+    setState(() => currentQuestionIndex = index);
+  }
+
+  void exitQuestion() {
+    setState(() => currentQuestionIndex = null);
+  }
+
+  void startGame() {
+    final next = answered.indexOf(false);
+    if (next != -1) {
+      setState(() {
+        currentQuestionIndex = next;
+        _currentTabIndex = 1;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,57 +93,32 @@ class ScavengerHuntApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const MainScaffold(),
-      routes: {
-        '/question1': (context) => const Question1Page(),
-        '/question2': (context) => const Question2Page(),
-        '/question3': (context) => const Question3Page(),
-        '/question4': (context) => const Question4Page(),
-        '/question5': (context) => const Question5Page(),
-        '/question6': (context) => const Question6Page(),
-        '/question7': (context) => const Question7Page(),
-        '/question8': (context) => const Question8Page(),
-        '/question9': (context) => const Question9Page(),
-        '/question10': (context) => const Question10Page(),
-      },
-    );
-  }
-}
-
-class MainScaffold extends StatefulWidget {
-  const MainScaffold({super.key});
-
-  @override
-  State<MainScaffold> createState() => _MainScaffoldState();
-}
-
-class _MainScaffoldState extends State<MainScaffold> {
-  int _currentIndex = 0;
-
-  final List<Widget> _tabs = const [
-    HomeTab(),
-    QuestionsTab(),
-    HelpTab(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _tabs[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        selectedItemColor: LSUColors.purple,
-        unselectedItemColor: LSUColors.lightGray,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.question_answer), label: 'Questions'),
-          BottomNavigationBarItem(icon: Icon(Icons.help_outline), label: 'Help'),
-        ],
+      home: Scaffold(
+        body: IndexedStack(
+          index: _currentTabIndex,
+          children: [
+            HomeTab(onStart: startGame),
+            QuestionsTab(
+              answered: answered,
+              currentQuestionIndex: currentQuestionIndex,
+              onAnswer: markAnswered,
+              onOpen: openQuestion,
+              onBack: exitQuestion,
+            ),
+            const HelpTab(),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentTabIndex,
+          selectedItemColor: LSUColors.purple,
+          unselectedItemColor: LSUColors.lightGray,
+          onTap: setTabIndex,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.question_answer), label: 'Questions'),
+            BottomNavigationBarItem(icon: Icon(Icons.help_outline), label: 'Help'),
+          ],
+        ),
       ),
     );
   }

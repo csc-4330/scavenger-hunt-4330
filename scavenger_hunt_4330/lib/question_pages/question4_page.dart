@@ -1,49 +1,30 @@
 import 'package:flutter/material.dart';
-import '../lsu_colors.dart';
+import '../locations_info/location4_info.dart';
+import 'question_page_template.dart';
 
 class Question4Page extends StatelessWidget {
-  const Question4Page({super.key});
+  final int index;
+  final void Function(int index) onAnswer;
+  final List<bool> answered;
 
-  final String question = "How many wooden steps are there in the capstone stairs?";
-  final String locationInfo = "The Capstone Stairs are an iconic part of the architectural design of the Patrick F. Taylor Hall, often serving as a striking feature that draws attention for both its functionality and aesthetic appeal.";
+  const Question4Page({super.key, required this.index, required this.onAnswer, required this.answered});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Question 4")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Card(
-          elevation: 4,
-          color: LSUColors.white,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Image.asset('assets/image4.jpg'),
-                const SizedBox(height: 20),
-                Text(
-                  question,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: LSUColors.purple,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 30),
-                Text(
-                  locationInfo,
-                  style: const TextStyle(fontSize: 16),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
+    return QuestionPageTemplate(
+      index: index,
+      prompt: "How many wooden steps are there in the capstone stairs?",
+      correctAnswer: "11",
+      imagePath: 'assets/image4.jpg',
+      onCorrect: () {
+        onAnswer(index);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (_) => Location4InfoPage(answered: answered, onAnswer: onAnswer),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

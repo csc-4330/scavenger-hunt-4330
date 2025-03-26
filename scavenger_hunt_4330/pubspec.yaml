@@ -63,6 +63,9 @@ flutter:
     - assets/image9.jpg
     - assets/image10.jpg
     - assets/pft.jpg
+    - assets/pft_floor1.png
+    - assets/pft_floor2.png
+    - assets/pft_floor3.png
     
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

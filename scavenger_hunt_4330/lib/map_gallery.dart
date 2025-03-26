@@ -6,9 +6,9 @@ class MapGallery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> mapImages = [
-      'assets/floor1.png',
-      'assets/floor2.png',
-      'assets/floor3.png',
+      'assets/pft_floor1.png',
+      'assets/pft_floor2.png',
+      'assets/pft_floor3.png',
     ];
 
     return Scaffold(
