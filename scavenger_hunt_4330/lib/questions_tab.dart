@@ -91,7 +91,10 @@ class QuestionsTab extends StatelessWidget {
                     );
                   }
                 },
-                child: const Text("Next Question"),
+                child: const Text(
+                  "Next Question",
+                  style: TextStyle(fontFamily: 'ProximaNova'),
+                ),
               ),
             ),
           ),
@@ -124,7 +127,12 @@ class QuestionsTab extends StatelessWidget {
     int nextUnanswered = answered.indexOf(false);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Questions")),
+      appBar: AppBar(
+        title: const Text(
+          "Questions",
+          style: TextStyle(fontFamily: 'ProximaNova'),
+        ),
+      ),
       body: Column(
         children: [
           Padding(
@@ -133,7 +141,10 @@ class QuestionsTab extends StatelessWidget {
               children: [
                 Text(
                   "$answeredCount of 10 questions answered",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    fontFamily: 'ProximaNova',
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 LinearProgressIndicator(
@@ -159,13 +170,17 @@ class QuestionsTab extends StatelessWidget {
                       ? LSUColors.white
                       : LSUColors.lightGray.withOpacity(0.3),
                   child: ListTile(
-                    title: Text("Question ${index + 1}"),
+                    title: Text(
+                      "Question ${index + 1}",
+                      style: const TextStyle(fontFamily: 'ProximaNova'),
+                    ),
                     subtitle: Text(
                       isAnswered
                           ? "Answered"
                           : isUnlocked
                               ? "Ready to solve"
                               : "Locked",
+                      style: const TextStyle(fontFamily: 'ProximaNova'),
                     ),
                     enabled: isUnlocked,
                     onTap: () => _handleTap(context, index),

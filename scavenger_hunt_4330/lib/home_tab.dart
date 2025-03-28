@@ -8,7 +8,12 @@ class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Welcome')),
+      appBar: AppBar(
+        title: const Text(
+          'Welcome',
+          style: TextStyle(fontFamily: 'ProximaNova'),
+        ),
+      ),
       body: Stack(
         children: [
           Positioned.fill(
@@ -30,13 +35,20 @@ class HomeTab extends StatelessWidget {
                 children: [
                   const Text(
                     'Welcome to the PFT Scavenger Hunt!',
-                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontFamily: 'ProximaNova',
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 20),
                   const Text(
                     'Find the location of each of the pictures and enter the code to advance!',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(
+                      fontFamily: 'ProximaNova',
+                      fontSize: 18,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 40),
@@ -48,7 +60,11 @@ class HomeTab extends StatelessWidget {
                     ),
                     child: const Text(
                       'Start Scavenger Hunt',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontFamily: 'ProximaNova',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],

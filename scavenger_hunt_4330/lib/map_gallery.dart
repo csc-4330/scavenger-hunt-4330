@@ -12,7 +12,12 @@ class MapGallery extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Building Maps")),
+      appBar: AppBar(
+        title: const Text(
+          "Building Maps",
+          style: TextStyle(fontFamily: 'ProximaNova'),
+        ),
+      ),
       body: ListView.builder(
         itemCount: mapImages.length,
         itemBuilder: (context, index) {
@@ -20,11 +25,14 @@ class MapGallery extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                Text("Floor ${index + 1}",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    )),
+                Text(
+                  "Floor ${index + 1}",
+                  style: const TextStyle(
+                    fontFamily: 'ProximaNova',
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 const SizedBox(height: 10),
                 Image.asset(mapImages[index]),
               ],

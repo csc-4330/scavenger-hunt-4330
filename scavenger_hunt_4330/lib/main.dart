@@ -24,7 +24,6 @@ class _ScavengerHuntAppState extends State<ScavengerHuntApp> {
     setState(() {
       _currentTabIndex = index;
       if (_currentTabIndex == 1 && currentQuestionIndex == null) {
-        // Only reset to list view if we’re not actively viewing a question
         currentQuestionIndex = null;
       }
     });
@@ -66,6 +65,7 @@ class _ScavengerHuntAppState extends State<ScavengerHuntApp> {
       title: 'PFT Scavenger Hunt',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'ProximaNova', 
         useMaterial3: true,
         scaffoldBackgroundColor: LSUColors.white,
         colorScheme: const ColorScheme(

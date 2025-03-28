@@ -36,6 +36,7 @@ class HomePage extends StatelessWidget {
                   Text(
                     'Welcome to the PFT Scavenger Hunt!',
                     style: TextStyle(
+                      fontFamily: 'ProximaNova',
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: LSUColors.purple,
@@ -46,6 +47,7 @@ class HomePage extends StatelessWidget {
                   Text(
                     'Find the location of each of the pictures and enter the code to advance to the next location!',
                     style: TextStyle(
+                      fontFamily: 'ProximaNova',
                       fontSize: 18,
                       color: LSUColors.processBlack,
                     ),
@@ -58,7 +60,10 @@ class HomePage extends StatelessWidget {
                     },
                     child: const Text(
                       'Start Game',
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(
+                        fontFamily: 'ProximaNova',
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                 ],

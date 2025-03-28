@@ -8,14 +8,22 @@ class HelpTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Help")),
+      appBar: AppBar(
+        title: const Text(
+          "Help",
+          style: TextStyle(fontFamily: 'ProximaNova'),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
             ElevatedButton.icon(
               icon: const Icon(Icons.map),
-              label: const Text("View Building Maps"),
+              label: const Text(
+                "View Building Maps",
+                style: TextStyle(fontFamily: 'ProximaNova'),
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -27,6 +35,7 @@ class HelpTab extends StatelessWidget {
             const Text(
               "How to Play",
               style: TextStyle(
+                fontFamily: 'ProximaNova',
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: LSUColors.purple,
@@ -38,7 +47,10 @@ class HelpTab extends StatelessWidget {
               "2. Go to the location in the picture.\n"
               "3. Enter your answer.\n"
               "4. Correct answers unlock the next question and reveal more info.",
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(
+                fontFamily: 'ProximaNova',
+                fontSize: 16,
+              ),
             ),
           ],
         ),

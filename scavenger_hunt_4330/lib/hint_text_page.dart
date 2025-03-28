@@ -51,6 +51,7 @@ class HintTextPage extends StatelessWidget {
                         Text(
                           hintTextMessage,
                           style: const TextStyle(
+                            fontFamily: 'ProximaNova',
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: Colors.black87,
@@ -71,6 +72,7 @@ class HintTextPage extends StatelessWidget {
                           child: const Text(
                             "Continue",
                             style: TextStyle(
+                              fontFamily: 'ProximaNova',
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: LSUColors.white,

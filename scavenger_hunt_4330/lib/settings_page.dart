@@ -32,13 +32,21 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
+      appBar: AppBar(
+        title: const Text(
+          'Settings',
+          style: TextStyle(fontFamily: 'ProximaNova'),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
             SwitchListTile(
-              title: const Text("Dark Mode"),
+              title: const Text(
+                "Dark Mode",
+                style: TextStyle(fontFamily: 'ProximaNova'),
+              ),
               value: _isDarkMode,
               onChanged: (value) {
                 setState(() {
@@ -50,10 +58,17 @@ class _SettingsPageState extends State<SettingsPage> {
             const SizedBox(height: 20),
             const Text(
               "Select Difficulty:",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontFamily: 'ProximaNova',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             RadioListTile<String>(
-              title: const Text("Hard (1-minute timer)"),
+              title: const Text(
+                "Hard (1-minute timer)",
+                style: TextStyle(fontFamily: 'ProximaNova'),
+              ),
               value: "hard",
               groupValue: _difficulty,
               onChanged: (value) {
@@ -64,7 +79,10 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
             RadioListTile<String>(
-              title: const Text("Medium (5-minute timer)"),
+              title: const Text(
+                "Medium (5-minute timer)",
+                style: TextStyle(fontFamily: 'ProximaNova'),
+              ),
               value: "medium",
               groupValue: _difficulty,
               onChanged: (value) {
@@ -75,7 +93,10 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
             RadioListTile<String>(
-              title: const Text("Casual (No timer)"),
+              title: const Text(
+                "Casual (No timer)",
+                style: TextStyle(fontFamily: 'ProximaNova'),
+              ),
               value: "casual",
               groupValue: _difficulty,
               onChanged: (value) {
