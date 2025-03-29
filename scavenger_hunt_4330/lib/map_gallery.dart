@@ -1,8 +1,22 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:scavenger_hunt_4330/widgets/lsu_bottom_nav_bar.dart'; // Update path as needed
 
 class MapGallery extends StatelessWidget {
   const MapGallery({super.key});
+
+  void _onTabSelected(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, '/home');
+        break;
+      case 1:
+        Navigator.pushReplacementNamed(context, '/questions');
+        break;
+      case 2:
+        Navigator.pushReplacementNamed(context, '/help');
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +57,10 @@ class MapGallery extends StatelessWidget {
           );
         },
       ),
+      bottomNavigationBar: LSUBottomNavBar(
+        currentIndex: 0, // Assuming this is the "Home" tab
+        onTap: (index) => _onTabSelected(context, index),
+      ),
     );
   }
 }
@@ -69,15 +87,12 @@ class _DoubleTapZoomImageState extends State<_DoubleTapZoomImage> {
     if (position == null) return;
 
     if (!_zoomed) {
-      // Zoom in about the tap position.
-      // Formula: translate(P) * scale(zoom) * translate(-P) where P is the tap position.
       _controller.value = Matrix4.identity()
         ..translate(position.dx, position.dy)
         ..scale(2.0)
         ..translate(-position.dx, -position.dy);
       _zoomed = true;
     } else {
-      // Reset to identity (no zoom).
       _controller.value = Matrix4.identity();
       _zoomed = false;
     }
@@ -91,7 +106,7 @@ class _DoubleTapZoomImageState extends State<_DoubleTapZoomImage> {
       child: InteractiveViewer(
         transformationController: _controller,
         panEnabled: true,
-        scaleEnabled: false, // disable pinch-to-zoom
+        scaleEnabled: false,
         child: Image.asset(widget.imagePath),
       ),
     );
