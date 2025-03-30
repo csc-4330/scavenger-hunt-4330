@@ -13,12 +13,14 @@ class HomeTab extends StatelessWidget {
         title: const Text(
           'Scavenger Hunt of PFT',
           style: TextStyle(
-            fontFamily: 'ProximaNova',
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
+            fontFamily: 'ProximaNova', // Ensuring Proxima Nova is used
+            fontSize: 30, // Increase font size for title
+            fontWeight: FontWeight.bold, // Bold for better emphasis (no issues with rendering)
+            color: Colors.white, // White text color for contrast
           ),
         ),
         backgroundColor: LSUColors.purple, // Apply LSU Purple to AppBar
+        centerTitle: true, // Center the title
       ),
       body: Stack(
         children: [
@@ -49,9 +51,9 @@ class HomeTab extends StatelessWidget {
                   const Text(
                     'Welcome to the PFT Scavenger Hunt!',
                     style: TextStyle(
-                      fontFamily: 'ProximaNova',
+                      fontFamily: 'ProximaNova', // Ensuring Proxima Nova is used here as well
                       fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.bold, // Bold text for heading
                       color: LSUColors.purple, // LSU Purple for headings
                     ),
                     textAlign: TextAlign.center,
@@ -60,8 +62,9 @@ class HomeTab extends StatelessWidget {
                   const Text(
                     'Find the location of each of the pictures and enter the code to advance!',
                     style: TextStyle(
-                      fontFamily: 'ProximaNova',
+                      fontFamily: 'ProximaNova', // Ensuring Proxima Nova is used
                       fontSize: 18,
+                      fontWeight: FontWeight.normal, // Lighter weight for body text
                       color: LSUColors.purple, // LSU Purple for subtext
                     ),
                     textAlign: TextAlign.center,
@@ -70,7 +73,7 @@ class HomeTab extends StatelessWidget {
                   ElevatedButton(
                     onPressed: onStart,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: LSUColors.gold, // LSU Gold for the button
+                      backgroundColor: LSUColors.purple, // Change button to LSU Purple
                       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                       elevation: 5,
@@ -78,10 +81,10 @@ class HomeTab extends StatelessWidget {
                     child: const Text(
                       'Start Scavenger Hunt',
                       style: TextStyle(
-                        fontFamily: 'ProximaNova',
+                        fontFamily: 'ProximaNova', // Ensuring Proxima Nova is used
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: LSUColors.white, // White text on gold button
+                        color: LSUColors.white, // White text for contrast
                       ),
                     ),
                   ),
