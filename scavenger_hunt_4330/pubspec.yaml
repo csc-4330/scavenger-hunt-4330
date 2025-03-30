@@ -69,11 +69,23 @@ flutter:
   fonts:
     - family: ProximaNova
       fonts:
-        - asset: assets/fonts/proximanova_black.otf
-        - asset: assets/fonts/proximanova_bold.otf
-          weight: 700
+        - asset: assets/fonts/proximanova_regular.ttf
         - asset: assets/fonts/proximanova_light.otf
           weight: 300
+        - asset: assets/fonts/proximanova_extrabold.otf
+          weight: 800
+        - asset: assets/fonts/proximanova_boldit.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/proximanova_bold.otf
+          weight: 700
+        - asset: assets/fonts/proximanova_black.ttf
+          weight: 900
+        - asset: assets/fonts/proximanova_black.otf
+          weight: 900
+        - asset: assets/fonts/proximanova_blackit.otf
+          weight: 900
+          style: italic
     
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
