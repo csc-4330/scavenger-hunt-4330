@@ -1,23 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_4330/widgets/lsu_bottom_nav_bar.dart'; // Update path as needed
 
 class MapGallery extends StatelessWidget {
   const MapGallery({super.key});
 
-  void _onTabSelected(BuildContext context, int index) {
-    switch (index) {
-      case 0:
-        Navigator.pushReplacementNamed(context, '/home');
-        break;
-      case 1:
-        Navigator.pushReplacementNamed(context, '/questions');
-        break;
-      case 2:
-        Navigator.pushReplacementNamed(context, '/help');
-        break;
-    }
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     final List<String> mapImages = [
@@ -57,10 +43,8 @@ class MapGallery extends StatelessWidget {
           );
         },
       ),
-      bottomNavigationBar: LSUBottomNavBar(
-        currentIndex: 0, // Assuming this is the "Home" tab
-        onTap: (index) => _onTabSelected(context, index),
-      ),
+     
+      
     );
   }
 }
