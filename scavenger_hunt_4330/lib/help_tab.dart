@@ -7,6 +7,19 @@ class HelpTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Navigator(
+      onGenerateRoute: (settings) => MaterialPageRoute(
+        builder: (_) => const HelpHomePage(),
+      ),
+    );
+  }
+}
+
+class HelpHomePage extends StatelessWidget {
+  const HelpHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -25,8 +38,7 @@ class HelpTab extends StatelessWidget {
                 style: TextStyle(fontFamily: 'ProximaNova'),
               ),
               onPressed: () {
-                Navigator.push(
-                  context,
+                Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => const MapGallery()),
                 );
               },
