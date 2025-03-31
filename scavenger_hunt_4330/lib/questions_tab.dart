@@ -140,73 +140,76 @@ class QuestionsHomePage extends StatelessWidget {
         centerTitle: true,  // This will center the title in the AppBar
         backgroundColor: LSUColors.purple, // LSU purple app bar
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              children: [
-                Text(
-                  "$answeredCount of 10 questions answered",
-                  style: const TextStyle(
-                    fontFamily: 'ProximaNova',
-                    fontWeight: FontWeight.bold,
+      body: Container(
+        color: LSUColors.lightGold, // LSU Light Gold background
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                children: [
+                  Text(
+                    "$answeredCount of 10 questions answered",
+                    style: const TextStyle(
+                      fontFamily: 'ProximaNova',
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                LinearProgressIndicator(
-                  value: answeredCount / 10,
-                  minHeight: 6,
-                  backgroundColor: LSUColors.lightGray,
-                  valueColor: const AlwaysStoppedAnimation<Color>(LSUColors.gold),
-                ),
-              ],
+                  const SizedBox(height: 4),
+                  LinearProgressIndicator(
+                    value: answeredCount / 10,
+                    minHeight: 6,
+                    backgroundColor: LSUColors.lightGray,
+                    valueColor: const AlwaysStoppedAnimation<Color>(LSUColors.purple), // Purple progress bar
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                final isAnswered = answered[index];
-                final isNext = index == nextUnanswered;
-                final isUnlocked = isAnswered || isNext;
+            const SizedBox(height: 8),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  final isAnswered = answered[index];
+                  final isNext = index == nextUnanswered;
+                  final isUnlocked = isAnswered || isNext;
 
-                return Card(
-                  color: isUnlocked
-                      ? LSUColors.white
-                      : LSUColors.lightGray.withOpacity(0.3),
-                  child: ListTile(
-                    title: Text(
-                      "Question ${index + 1}",
-                      style: const TextStyle(fontFamily: 'ProximaNova'),
+                  return Card(
+                    color: isUnlocked
+                        ? LSUColors.white
+                        : LSUColors.lightGray.withOpacity(0.3),
+                    child: ListTile(
+                      title: Text(
+                        "Question ${index + 1}",
+                        style: const TextStyle(fontFamily: 'ProximaNova'),
+                      ),
+                      subtitle: Text(
+                        isAnswered
+                            ? "Answered"
+                            : isUnlocked
+                                ? "Ready to solve"
+                                : "Locked",
+                        style: const TextStyle(fontFamily: 'ProximaNova'),
+                      ),
+                      enabled: isUnlocked,
+                      onTap: () => _handleTap(context, index),
+                      leading: Icon(
+                        isAnswered
+                            ? Icons.check_circle
+                            : isUnlocked
+                                ? Icons.lock_open
+                                : Icons.lock,
+                        color: isAnswered
+                            ? LSUColors.purple // Purple checkmark color
+                            : LSUColors.mediumGray,
+                      ),
                     ),
-                    subtitle: Text(
-                      isAnswered
-                          ? "Answered"
-                          : isUnlocked
-                              ? "Ready to solve"
-                              : "Locked",
-                      style: const TextStyle(fontFamily: 'ProximaNova'),
-                    ),
-                    enabled: isUnlocked,
-                    onTap: () => _handleTap(context, index),
-                    leading: Icon(
-                      isAnswered
-                          ? Icons.check_circle
-                          : isUnlocked
-                              ? Icons.lock_open
-                              : Icons.lock,
-                      color: isAnswered
-                          ? LSUColors.gold
-                          : LSUColors.mediumGray,
-                    ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
