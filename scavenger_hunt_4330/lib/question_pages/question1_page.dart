@@ -40,18 +40,25 @@ class Question1Page extends StatelessWidget {
         Positioned(
           bottom: 20,
           right: 20,
-          child: FloatingActionButton(
-            backgroundColor: LSUColors.purple,
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  fullscreenDialog: true,
-                  builder: (_) => const HintOverlayPage(),
-                ),
-              );
-            },
-            child: const Icon(Icons.help_outline, color: Colors.white),
-            tooltip: 'Hint',
+          child: Tooltip(
+            message: 'Hint',
+            textStyle: const TextStyle(fontFamily: 'ProximaNova', color: Colors.white),
+            decoration: BoxDecoration(
+              color: Colors.black87,
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: FloatingActionButton(
+              backgroundColor: LSUColors.purple,
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    fullscreenDialog: true,
+                    builder: (_) => const HintOverlayPage(),
+                  ),
+                );
+              },
+              child: const Icon(Icons.help_outline, color: Colors.white),
+            ),
           ),
         ),
       ],

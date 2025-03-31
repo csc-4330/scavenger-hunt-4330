@@ -76,6 +76,9 @@ flutter:
     - assets/pft_floor2q7.PNG
     - assets/pft_floor3q8.PNG
     - assets/pft_floor3q9.PNG
+    - assets/pft_floor1q.PNG
+    - assets/pft_floor2q7.png
+    - assets/pft_floor3q.PNG
     - assets/lsu.PNG
 
   fonts:
