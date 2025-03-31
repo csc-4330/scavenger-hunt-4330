@@ -26,60 +26,86 @@ Widget buildLocationInfoPage({
     ),
     body: Container(
       color: LSUColors.lightGold, // LSU Light Gold background
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Image.asset(imagePath, width: double.infinity, height: 300, fit: BoxFit.cover),
-            const SizedBox(height: 24),
-            Container(
-              padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisSize: MainAxisSize.max, // Ensure Column expands to fill available space
+        children: [
+          // Center the image properly with more padding on the sides
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0), // Added horizontal padding
+            child: Container(
+              width: double.infinity,
+              height: 300,
               decoration: BoxDecoration(
-                color: LSUColors.lightGold, // Background color light gold
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: LSUColors.purple, width: 2), // Purple border
+                border: Border.all(color: LSUColors.purple, width: 4), // Bold purple border
               ),
-              child: Text(
-                text,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.normal, // Regular text weight
-                  color: LSUColors.black, // Black text for contrast
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
-            const SizedBox(height: 24),
-            if (answered.contains(false)) 
-              ElevatedButton(
-                onPressed: () {
-                  int next = answered.indexOf(false);
-                  if (next != -1) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => _getQuestionPage(next, onAnswer, answered),
+          ),
+          const SizedBox(height: 24),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  // Text container with purple border and light gold background
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: LSUColors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: LSUColors.purple, width: 2), // Purple border
+                    ),
+                    child: Text(
+                      text,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.normal, // Regular text weight
+                        color: LSUColors.black, // Black text for contrast
                       ),
-                    );
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: LSUColors.purple, // LSU purple button
-                  foregroundColor: LSUColors.white, // White text on button
-                  padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                ),
-                child: const Text(
-                  "Next Question",
-                  style: TextStyle(
-                    fontFamily: 'ProximaNova', // Using Proxima Nova font
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 24),
+                  if (answered.contains(false)) 
+                    ElevatedButton(
+                      onPressed: () {
+                        int next = answered.indexOf(false);
+                        if (next != -1) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => _getQuestionPage(next, onAnswer, answered),
+                            ),
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: LSUColors.purple, // LSU purple button
+                        foregroundColor: LSUColors.white, // White text on button
+                        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                      ),
+                      child: const Text(
+                        "Next Question",
+                        style: TextStyle(
+                          fontFamily: 'ProximaNova', // Using Proxima Nova font
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                ],
               ),
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     ),
   );

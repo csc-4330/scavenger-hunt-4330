@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'lsu_colors.dart';
 import 'locations_info/location1_info.dart';
@@ -102,36 +101,7 @@ class QuestionsHomePage extends StatelessWidget {
     ];
 
     return Scaffold(
-      body: Stack(
-        children: [
-          pages[index],
-          Positioned(
-            bottom: 20,
-            left: 20,
-            right: 20,
-            child: Visibility(
-              visible: answered.contains(false),
-              child: ElevatedButton(
-                onPressed: () {
-                  final next = answered.indexOf(false);
-                  if (next != -1) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => getQuestionPage(next),
-                      ),
-                    );
-                  }
-                },
-                child: const Text(
-                  "Next Question",
-                  style: TextStyle(fontFamily: 'ProximaNova'),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+      body: pages[index], // Just display the location info page directly
     );
   }
 
