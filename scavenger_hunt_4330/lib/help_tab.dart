@@ -46,27 +46,33 @@ class HelpHomePage extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             _helpSection(
-              title: "Getting Started",
+              title: "How to Begin",
               body:
-                  "Welcome to the LSU Scavenger Hunt App! Tap “Begin Your Adventure” on the home screen to start your journey around campus. Have fun, tiger!",
+                  "Tap “Start Scavenger Hunt” from the Home tab to start the scavenger hunt. Each clue will guide you through Patrick F. Taylor Hall!",
             ),
             _divider(),
             _helpSection(
-              title: "Finding Clues",
+              title: "Answering Clues",
               body:
-                  "Use the image shown in each question to locate specific spots inside Patrick F. Taylor Hall. Explore carefully — the answer is right in front of you!",
+                  "Once you reach a location, type in your answer in the box provided. Tap 'Submit' to check your answer and move on to the next challenge.",
             ),
             _divider(),
             _helpSection(
-              title: "Submitting Answers",
+              title: "Tracking Your Progress",
               body:
-                  "Once you find the location, type in your answer and tap 'Submit.' A correct answer will unlock the next challenge automatically.",
+                  "Use the 'Questions' tab to keep up with your completed challenges and see what’s still ahead.",
             ),
             _divider(),
             _helpSection(
-              title: "Viewing Progress",
+              title: "Exploring the Building",
               body:
-                  "Track your progress in the “Questions” tab. You'll see which questions you’ve completed and how many are left to conquer.",
+                  "Each clue comes with an image to help guide you. Use the photo hints to navigate to the right location inside the building.",
+            ),
+            _divider(),
+            _helpSection(
+              title: "Need More Help?",
+              body:
+                  "If you're unsure where to go, try checking the building map above! It'll help you get oriented and find your way.",
             ),
           ],
         ),
