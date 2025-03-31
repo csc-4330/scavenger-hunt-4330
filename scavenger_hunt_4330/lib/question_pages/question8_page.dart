@@ -13,8 +13,8 @@ class Question8Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return QuestionPageTemplate(
       index: index,
-      prompt: "What floor is Professor Shepherd's office on? (e.g., 1st, 2nd, 3rd)",
-      correctAnswer: "3rd",
+      prompt: "What is the Professor Shepherd's office room number?",
+      correctAnswer: "3272W",
       imagePath: 'assets/image8.jpg',
       onCorrect: () {
         onAnswer(index);

@@ -130,9 +130,15 @@ class QuestionsHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Questions",
-          style: TextStyle(fontFamily: 'ProximaNova'),
+          "Questions", 
+          style: TextStyle(
+            fontFamily: 'ProximaNova', 
+            fontWeight: FontWeight.bold, 
+            fontSize: 20, // Adjust font size if necessary
+          ),
         ),
+        centerTitle: true,  // This will center the title in the AppBar
+        backgroundColor: LSUColors.purple, // LSU purple app bar
       ),
       body: Column(
         children: [

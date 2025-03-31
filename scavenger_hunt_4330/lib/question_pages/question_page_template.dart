@@ -42,21 +42,30 @@ class _QuestionPageTemplateState extends State<QuestionPageTemplate> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Question ${widget.index + 1}", style: const TextStyle(fontFamily: 'ProximaNova')),
+        title: Text(
+          "Question ${widget.index + 1}",
+          style: TextStyle(
+            fontFamily: 'ProximaNova', 
+            fontWeight: FontWeight.bold, // Bold the question number
+            fontSize: 20, // Adjust size if needed
+          ),
+        ),
         backgroundColor: LSUColors.purple, // AppBar uses LSU purple
         foregroundColor: LSUColors.white, // White text for app bar
+        centerTitle: true, // Center the title
       ),
       body: Container(
         color: LSUColors.lightGold, // Set background to LSU Light Gold
         width: double.infinity, // Ensure the width is fully stretched
         height: double.infinity, // Ensure the height is fully stretched
         child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0), // Added padding for the whole page
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center, // Ensures the content is centered
             children: [
               // Padding around the image for better spacing
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),  // Increased horizontal padding
+                padding: const EdgeInsets.symmetric(vertical: 30),  // Increased vertical padding
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: LSUColors.purple, width: 4), // Purple bold border
@@ -71,16 +80,21 @@ class _QuestionPageTemplateState extends State<QuestionPageTemplate> {
                 ),
               ),
               const SizedBox(height: 24),
-              Text(
-                widget.prompt,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontFamily: 'ProximaNova', // Using Proxima Nova font
-                  color: LSUColors.black, // Black text for contrast
+              // Wrap the question prompt text to avoid it getting too close to the screen sides
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Text(
+                  widget.prompt,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'ProximaNova', // Using Proxima Nova font
+                    color: LSUColors.black, // Black text for contrast
+                    fontWeight: FontWeight.w600, // Made the text a bit bolder
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 24), // Space before the answer box
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12), // Added horizontal padding
                 child: TextField(
@@ -95,7 +109,7 @@ class _QuestionPageTemplateState extends State<QuestionPageTemplate> {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 24), // Increased space between the answer box and the submit button
               ElevatedButton(
                 onPressed: _submit,
                 style: ElevatedButton.styleFrom(
