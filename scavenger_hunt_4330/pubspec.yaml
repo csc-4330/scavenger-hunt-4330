@@ -66,6 +66,7 @@ flutter:
     - assets/pft_floor1.png
     - assets/pft_floor2.png
     - assets/pft_floor3.png
+    - assets/lsu_logo.png
   fonts:
     - family: ProximaNova
       fonts:
