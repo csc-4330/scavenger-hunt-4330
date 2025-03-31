@@ -102,7 +102,7 @@ class QuestionsHomePage extends StatelessWidget {
     ];
 
     return Scaffold(
-      body: pages[index], // Just display the location info page directly
+      body: pages[index],
     );
   }
 
@@ -128,88 +128,87 @@ class QuestionsHomePage extends StatelessWidget {
     int nextUnanswered = answered.indexOf(false);
 
     return Scaffold(
+      // 1. Set backgroundColor to LSU's light gold
+      backgroundColor: LSUColors.lightGold,
       appBar: AppBar(
         title: const Text(
           "Questions", 
           style: TextStyle(
             fontFamily: 'ProximaNova', 
             fontWeight: FontWeight.bold, 
-            fontSize: 20, // Adjust font size if necessary
+            fontSize: 20,
           ),
         ),
-        centerTitle: true,  // This will center the title in the AppBar
-        backgroundColor: LSUColors.purple, // LSU purple app bar
+        centerTitle: true,
+        backgroundColor: LSUColors.purple,
       ),
-      body: Container(
-        color: LSUColors.lightGold, // LSU Light Gold background
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                children: [
-                  Text(
-                    "$answeredCount of 10 questions answered",
-                    style: const TextStyle(
-                      fontFamily: 'ProximaNova',
-                      fontWeight: FontWeight.bold,
-                    ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              children: [
+                Text(
+                  "$answeredCount of 10 questions answered",
+                  style: const TextStyle(
+                    fontFamily: 'ProximaNova',
+                    fontWeight: FontWeight.bold,
                   ),
-                  const SizedBox(height: 4),
-                  LinearProgressIndicator(
-                    value: answeredCount / 10,
-                    minHeight: 6,
-                    backgroundColor: LSUColors.lightGray,
-                    valueColor: const AlwaysStoppedAnimation<Color>(LSUColors.purple), // Purple progress bar
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 4),
+                LinearProgressIndicator(
+                  value: answeredCount / 10,
+                  minHeight: 6,
+                  backgroundColor: LSUColors.lightGold,
+                  valueColor: const AlwaysStoppedAnimation<Color>(LSUColors.gold),
+                ),
+              ],
             ),
-            const SizedBox(height: 8),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  final isAnswered = answered[index];
-                  final isNext = index == nextUnanswered;
-                  final isUnlocked = isAnswered || isNext;
+          ),
+          const SizedBox(height: 8),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                final isAnswered = answered[index];
+                final isNext = index == nextUnanswered;
+                final isUnlocked = isAnswered || isNext;
 
-                  return Card(
-                    color: isUnlocked
-                        ? LSUColors.white
-                        : LSUColors.lightGray.withOpacity(0.3),
-                    child: ListTile(
-                      title: Text(
-                        "Question ${index + 1}",
-                        style: const TextStyle(fontFamily: 'ProximaNova'),
-                      ),
-                      subtitle: Text(
-                        isAnswered
-                            ? "Answered"
-                            : isUnlocked
-                                ? "Ready to solve"
-                                : "Locked",
-                        style: const TextStyle(fontFamily: 'ProximaNova'),
-                      ),
-                      enabled: isUnlocked,
-                      onTap: () => _handleTap(context, index),
-                      leading: Icon(
-                        isAnswered
-                            ? Icons.check_circle
-                            : isUnlocked
-                                ? Icons.lock_open
-                                : Icons.lock,
-                        color: isAnswered
-                            ? LSUColors.purple // Purple checkmark color
-                            : LSUColors.mediumGray,
-                      ),
+                return Card(
+                  color: isUnlocked
+                      ? LSUColors.white
+                      : LSUColors.lightGray.withOpacity(0.3),
+                  child: ListTile(
+                    title: Text(
+                      "Question ${index + 1}",
+                      style: const TextStyle(fontFamily: 'ProximaNova'),
                     ),
-                  );
-                },
-              ),
+                    subtitle: Text(
+                      isAnswered
+                          ? "Answered"
+                          : isUnlocked
+                              ? "Ready to solve"
+                              : "Locked",
+                      style: const TextStyle(fontFamily: 'ProximaNova'),
+                    ),
+                    enabled: isUnlocked,
+                    onTap: () => _handleTap(context, index),
+                    leading: Icon(
+                      isAnswered
+                          ? Icons.check_circle
+                          : isUnlocked
+                              ? Icons.lock_open
+                              : Icons.lock,
+                      color: isAnswered
+                          ? LSUColors.gold
+                          : LSUColors.mediumGray,
+                    ),
+                  ),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
