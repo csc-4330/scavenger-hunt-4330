@@ -12,7 +12,7 @@ class Location8InfoPage extends StatelessWidget {
     return buildLocationInfoPage(
       context: context,
       imagePath: 'assets/image8.jpg',
-      text: "Prof. Shepherd's office is on the 3rd floor — don’t mix it up!",
+      text: "Professor Shepherd's office, located in the 3rd floor of the engineering building, is easily accessible to students. This is not to be confused with Daniel Shepherd's office, which is on the 2nd floor.",
       currentIndex: 7,
       answered: answered,
       onAnswer: onAnswer,

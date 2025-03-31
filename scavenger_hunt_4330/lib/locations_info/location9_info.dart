@@ -12,7 +12,7 @@ class Location9InfoPage extends StatelessWidget {
     return buildLocationInfoPage(
       context: context,
       imagePath: 'assets/image9.jpg',
-      text: "The CS office in PFT offers advising and departmental resources.",
+      text: "The Computer Science office in Patrick F. Taylor Hall is a central point for students in the program, providing academic resources, advising, and information about the latest developments in the field.",
       currentIndex: 8,
       answered: answered,
       onAnswer: onAnswer,
