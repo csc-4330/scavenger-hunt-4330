@@ -12,7 +12,7 @@ class Location3InfoPage extends StatelessWidget {
     return buildLocationInfoPage(
       context: context,
       imagePath: 'assets/image3.jpg',
-      text: "The sponsor wall highlights companies that support LSU Engineering.",
+      text: "The sponsor wall in Patrick F. Taylor Hall recognizes the contributions of companies and organizations that support LSU's engineering programs, with banners prominently displaying their names.",
       currentIndex: 2,
       answered: answered,
       onAnswer: onAnswer,

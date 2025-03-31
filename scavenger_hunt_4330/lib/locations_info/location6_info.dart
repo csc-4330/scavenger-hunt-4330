@@ -12,7 +12,7 @@ class Location6InfoPage extends StatelessWidget {
     return buildLocationInfoPage(
       context: context,
       imagePath: 'assets/image6.jpg',
-      text: "Panera Bread is a common student hangout spot with posted occupancy info.",
+      text: "Panera Bread at LSU is a popular spot for students and faculty, offering a variety of delicious menu items. The commons outside provide an open space to enjoy food, unwind after class, or study with friends.",
       currentIndex: 5,
       answered: answered,
       onAnswer: onAnswer,

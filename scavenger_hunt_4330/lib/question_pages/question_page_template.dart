@@ -48,11 +48,28 @@ class _QuestionPageTemplateState extends State<QuestionPageTemplate> {
       ),
       body: Container(
         color: LSUColors.lightGold, // Set background to LSU Light Gold
-        padding: const EdgeInsets.all(16),
+        width: double.infinity, // Ensure the width is fully stretched
+        height: double.infinity, // Ensure the height is fully stretched
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center, // Ensures the content is centered
             children: [
-              Image.asset(widget.imagePath, height: 300, fit: BoxFit.cover),
+              // Padding around the image for better spacing
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),  // Increased horizontal padding
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: LSUColors.purple, width: 4), // Purple bold border
+                    borderRadius: BorderRadius.zero, // Removing rounded corners from the image
+                  ),
+                  child: Image.asset(
+                    widget.imagePath,
+                    height: 350, // Increased image height for better visual impact
+                    fit: BoxFit.cover, // Ensure the image covers the area
+                    width: double.infinity, // Make the image take up the full width
+                  ),
+                ),
+              ),
               const SizedBox(height: 24),
               Text(
                 widget.prompt,
@@ -64,14 +81,17 @@ class _QuestionPageTemplateState extends State<QuestionPageTemplate> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              TextField(
-                controller: _controller,
-                decoration: InputDecoration(
-                  hintText: "Enter your answer",
-                  hintStyle: TextStyle(color: LSUColors.black.withOpacity(0.6)), // Light hint text color
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8), // Rounded corners for input field
-                    borderSide: BorderSide(color: LSUColors.purple, width: 2), // Purple border
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12), // Added horizontal padding
+                child: TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(
+                    hintText: "Enter your answer",
+                    hintStyle: TextStyle(color: LSUColors.black.withOpacity(0.6)), // Light hint text color
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8), // Rounded corners for input field
+                      borderSide: BorderSide(color: LSUColors.purple, width: 2), // Purple border
+                    ),
                   ),
                 ),
               ),

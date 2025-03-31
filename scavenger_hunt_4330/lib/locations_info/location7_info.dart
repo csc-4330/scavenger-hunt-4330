@@ -12,7 +12,7 @@ class Location7InfoPage extends StatelessWidget {
     return buildLocationInfoPage(
       context: context,
       imagePath: 'assets/image7.jpg',
-      text: "The distillery houses advanced chemical engineering research equipment.",
+      text: "The OTP- term refers to a unique part of LSU's distillery research area, where students and faculty explore cutting-edge chemical engineering processes.",
       currentIndex: 6,
       answered: answered,
       onAnswer: onAnswer,

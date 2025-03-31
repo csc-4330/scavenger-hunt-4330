@@ -12,7 +12,7 @@ class Location5InfoPage extends StatelessWidget {
     return buildLocationInfoPage(
       context: context,
       imagePath: 'assets/image5.jpg',
-      text: "Tau Beta Pi is an engineering honor society, founded at LSU in 1936.",
+      text: "Tau Beta Pi is the national engineering honor society, and the LSU chapter has a long history of honoring high-achieving engineering students, promoting the values of scholarship and service.",
       currentIndex: 4,
       answered: answered,
       onAnswer: onAnswer,

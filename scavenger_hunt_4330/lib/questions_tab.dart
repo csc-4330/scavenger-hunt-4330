@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
-import 'lsu_colors.dart';
+import '/lsu_colors.dart'; // Ensure LSU Colors are defined here (purple, gold, etc.)
+import '/question_pages/question1_page.dart';
+import '/question_pages/question2_page.dart';
+import '/question_pages/question3_page.dart';
+import '/question_pages/question4_page.dart';
+import '/question_pages/question5_page.dart';
+import '/question_pages/question6_page.dart';
+import '/question_pages/question7_page.dart';
+import '/question_pages/question8_page.dart';
+import '/question_pages/question9_page.dart';
+import '/question_pages/question10_page.dart';
+
+// Location Info pages should be imported here
 import 'locations_info/location1_info.dart';
 import 'locations_info/location2_info.dart';
 import 'locations_info/location3_info.dart';
@@ -10,17 +22,6 @@ import 'locations_info/location7_info.dart';
 import 'locations_info/location8_info.dart';
 import 'locations_info/location9_info.dart';
 import 'locations_info/location10_info.dart';
-
-import 'question_pages/question1_page.dart';
-import 'question_pages/question2_page.dart';
-import 'question_pages/question3_page.dart';
-import 'question_pages/question4_page.dart';
-import 'question_pages/question5_page.dart';
-import 'question_pages/question6_page.dart';
-import 'question_pages/question7_page.dart';
-import 'question_pages/question8_page.dart';
-import 'question_pages/question9_page.dart';
-import 'question_pages/question10_page.dart';
 
 final GlobalKey<NavigatorState> questionsNavigatorKey = GlobalKey<NavigatorState>();
 
