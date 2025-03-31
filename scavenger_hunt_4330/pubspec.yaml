@@ -63,10 +63,20 @@ flutter:
     - assets/image9.jpg
     - assets/image10.jpg
     - assets/pft.jpg
-    - assets/pft_floor1.png
-    - assets/pft_floor2.png
-    - assets/pft_floor3.png
-    - assets/lsu_logo.png
+    - assets/pft_floor1.PNG
+    - assets/pft_floor2.PNG
+    - assets/pft_floor3.PNG
+    - assets/pft_floor1q2.PNG
+    - assets/pft_floor1q3.PNG
+    - assets/pft_floor1q4.PNG
+    - assets/pft_floor1q5.PNG
+    - assets/pft_floor1q6.PNG
+    - assets/pft_floor1q10.PNG
+    - assets/pft_floor2q7.PNG
+    - assets/pft_floor3q8.PNG
+    - assets/pft_floor3q9.PNG
+    - assets/lsu.PNG
+
   fonts:
     - family: ProximaNova
       fonts:
