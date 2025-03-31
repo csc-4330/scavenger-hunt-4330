@@ -13,6 +13,7 @@ class Question1Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return QuestionPageTemplate(
       index: index,
+      
       prompt: "What is the binary number on the left wall of the atrium?",
       correctAnswer: "101010010",
       imagePath: 'assets/image1.jpg',

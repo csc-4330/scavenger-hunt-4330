@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_4330/lsu_colors.dart'; // Update with actual path to LSUColors
+import 'package:scavenger_hunt_4330/lsu_colors.dart'; 
 
 class LSUBottomNavBar extends StatelessWidget {
   final int currentIndex;

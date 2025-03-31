@@ -21,6 +21,7 @@ class HelpHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: LSUColors.lightGold,
       appBar: AppBar(
         title: const Text(
           "Help",
@@ -44,29 +45,68 @@ class HelpHomePage extends StatelessWidget {
               },
             ),
             const SizedBox(height: 24),
-            const Text(
-              "How to Play",
-              style: TextStyle(
-                fontFamily: 'ProximaNova',
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: LSUColors.purple,
-              ),
+            _helpSection(
+              title: "Getting Started",
+              body:
+                  "Welcome to the LSU Scavenger Hunt App! Tap “Begin Your Adventure” on the home screen to start your journey around campus. Have fun, tiger!",
             ),
-            const SizedBox(height: 8),
-            const Text(
-              "1. Start the game from the Home tab.\n"
-              "2. Go to the location in the picture.\n"
-              "3. Enter your answer.\n"
-              "4. Correct answers unlock the next question and reveal more info.",
-              style: TextStyle(
-                fontFamily: 'ProximaNova',
-                fontSize: 16,
-              ),
+            _divider(),
+            _helpSection(
+              title: "Finding Clues",
+              body:
+                  "Use the image shown in each question to locate specific spots inside Patrick F. Taylor Hall. Explore carefully — the answer is right in front of you!",
+            ),
+            _divider(),
+            _helpSection(
+              title: "Submitting Answers",
+              body:
+                  "Once you find the location, type in your answer and tap 'Submit.' A correct answer will unlock the next challenge automatically.",
+            ),
+            _divider(),
+            _helpSection(
+              title: "Viewing Progress",
+              body:
+                  "Track your progress in the “Questions” tab. You'll see which questions you’ve completed and how many are left to conquer.",
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _helpSection({required String title, required String body}) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontFamily: 'ProximaNova',
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: LSUColors.purple,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            body,
+            style: const TextStyle(
+              fontFamily: 'ProximaNova',
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _divider() {
+    return const Divider(
+      thickness: 1,
+      color: LSUColors.lightGray,
+      height: 32,
     );
   }
 }
