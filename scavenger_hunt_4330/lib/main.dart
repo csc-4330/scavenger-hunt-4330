@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'lsu_colors.dart';
 import 'home_tab.dart';
@@ -51,27 +50,27 @@ class _ScavengerHuntAppState extends State<ScavengerHuntApp> {
   }
 
   void startGame() {
-  final next = answered.indexOf(false);
-  if (next != -1) {
-    setState(() {
-      currentQuestionIndex = next;
-      _currentTabIndex = 1;
-    });
+    final next = answered.indexOf(false);
+    if (next != -1) {
+      setState(() {
+        currentQuestionIndex = next;
+        _currentTabIndex = 1;
+      });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      questionsNavigatorKey.currentState?.push(
-        MaterialPageRoute(
-          builder: (_) => QuestionsHomePage(
-            answered: answered,
-            onAnswer: markAnswered,
-            onOpen: openQuestion,
-            onBack: exitQuestion,
-          ).getQuestionPage(next),
-        ),
-      );
-    });
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        questionsNavigatorKey.currentState?.push(
+          MaterialPageRoute(
+            builder: (_) => QuestionsHomePage(
+              answered: answered,
+              onAnswer: markAnswered,
+              onOpen: openQuestion,
+              onBack: exitQuestion,
+            ).getQuestionPage(next),
+          ),
+        );
+      });
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +78,7 @@ class _ScavengerHuntAppState extends State<ScavengerHuntApp> {
       title: 'PFT Scavenger Hunt',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'ProximaNova', 
+        fontFamily: 'ProximaNova',
         useMaterial3: true,
         scaffoldBackgroundColor: LSUColors.white,
         colorScheme: const ColorScheme(
@@ -124,8 +123,9 @@ class _ScavengerHuntAppState extends State<ScavengerHuntApp> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentTabIndex,
-          selectedItemColor: LSUColors.purple,
-          unselectedItemColor: LSUColors.lightGray,
+          selectedItemColor: LSUColors.gold, // Gold for selected items
+          unselectedItemColor: Colors.white, // White for unselected items
+          backgroundColor: LSUColors.purple, // Purple background for the bar
           onTap: setTabIndex,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),

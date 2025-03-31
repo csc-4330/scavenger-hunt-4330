@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/lsu_colors.dart'; // Ensure LSU Colors are defined here (purple, gold, etc.)
 import '/question_pages/question1_page.dart';
 import '/question_pages/question2_page.dart';
 import '/question_pages/question3_page.dart';
@@ -21,43 +22,64 @@ Widget buildLocationInfoPage({
   return Scaffold(
     appBar: AppBar(
       title: const Text("Location Info"),
+      backgroundColor: LSUColors.purple, // LSU purple app bar
     ),
-    body: SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Image.asset(imagePath, width: double.infinity, height: 300, fit: BoxFit.cover),
-          const SizedBox(height: 24),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.purple, width: 2),
+    body: Container(
+      color: LSUColors.lightGold, // LSU Light Gold background
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Image.asset(imagePath, width: double.infinity, height: 300, fit: BoxFit.cover),
+            const SizedBox(height: 24),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: LSUColors.lightGold, // Background color light gold
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: LSUColors.purple, width: 2), // Purple border
+              ),
+              child: Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.normal, // Regular text weight
+                  color: LSUColors.black, // Black text for contrast
+                ),
+                textAlign: TextAlign.center,
+              ),
             ),
-            child: Text(
-              text,
-              style: const TextStyle(fontSize: 16),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const SizedBox(height: 24),
-          if (answered.contains(false))
-            ElevatedButton(
-              onPressed: () {
-                int next = answered.indexOf(false);
-                if (next != -1) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => _getQuestionPage(next, onAnswer, answered),
-                    ),
-                  );
-                }
-              },
-              child: const Text("Next Question"),
-            ),
-        ],
+            const SizedBox(height: 24),
+            if (answered.contains(false)) 
+              ElevatedButton(
+                onPressed: () {
+                  int next = answered.indexOf(false);
+                  if (next != -1) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => _getQuestionPage(next, onAnswer, answered),
+                      ),
+                    );
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: LSUColors.purple, // LSU purple button
+                  foregroundColor: LSUColors.white, // White text on button
+                  padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                ),
+                child: const Text(
+                  "Next Question",
+                  style: TextStyle(
+                    fontFamily: 'ProximaNova', // Using Proxima Nova font
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     ),
   );
