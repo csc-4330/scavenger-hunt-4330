@@ -11,7 +11,7 @@ class Location5InfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return buildLocationInfoPage(
       context: context,
-      imagePath: 'assets/image5.jpg',
+      imagePath: 'assets/image5.png',
       text: "Tau Beta Pi is the national engineering honor society, and the LSU chapter has a long history of honoring high-achieving engineering students, promoting the values of scholarship and service.",
       currentIndex: 4,
       answered: answered,

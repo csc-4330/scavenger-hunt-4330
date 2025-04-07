@@ -11,7 +11,7 @@ class Location4InfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return buildLocationInfoPage(
       context: context,
-      imagePath: 'assets/image4.jpg',
+      imagePath: 'assets/image4.png',
       text: "The Capstone Stairs are an iconic part of the architectural design of the Patrick F. Taylor Hall, often serving as a striking feature that draws attention for both its functionality and aesthetic appeal.",
       currentIndex: 3,
       answered: answered,
