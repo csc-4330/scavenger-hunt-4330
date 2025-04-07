@@ -23,7 +23,7 @@ class Question2Page extends StatelessWidget {
           index: index,
           prompt: "What is the room number for the BASF lab?",
           correctAnswer: "1154",
-          imagePath: 'assets/image2.jpg',
+          imagePath: 'assets/image2.png',
           onCorrect: () {
             onAnswer(index);
             Navigator.pushReplacement(

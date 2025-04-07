@@ -23,7 +23,7 @@ class Question9Page extends StatelessWidget {
           index: index,
           prompt: "What is the room number of the Computer Science office in PFT?",
           correctAnswer: "3325",
-          imagePath: 'assets/image9.jpg',
+          imagePath: 'assets/image9.png',
           onCorrect: () {
             onAnswer(index);
             Navigator.pushReplacement(

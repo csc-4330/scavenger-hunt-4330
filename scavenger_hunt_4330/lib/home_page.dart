@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/pft.jpg',
+              'assets/pft.png',
               fit: BoxFit.cover,
             ),
           ),

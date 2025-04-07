@@ -23,7 +23,7 @@ class Question7Page extends StatelessWidget {
           index: index,
           prompt: "What follows OTP- at the distillery on the second floor?",
           correctAnswer: "DC15S",
-          imagePath: 'assets/image7.jpg',
+          imagePath: 'assets/image7.png',
           onCorrect: () {
             onAnswer(index);
             Navigator.pushReplacement(

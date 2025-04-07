@@ -52,20 +52,20 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/image1.jpg
-    - assets/image2.jpg
-    - assets/image3.jpg
-    - assets/image4.jpg
-    - assets/image5.jpg
-    - assets/image6.jpg
-    - assets/image7.jpg
-    - assets/image8.jpg
-    - assets/image9.jpg
-    - assets/image10.jpg
-    - assets/pft.jpg
-    - assets/pft_floor1.PNG
-    - assets/pft_floor2.PNG
-    - assets/pft_floor3.PNG
+    - assets/image1.png
+    - assets/image2.png
+    - assets/image3.png
+    - assets/image4.png
+    - assets/image5.png
+    - assets/image6.png
+    - assets/image7.png
+    - assets/image8.png
+    - assets/image9.png
+    - assets/image10.png
+    - assets/pft.png
+    - assets/pft_floor1.png
+    - assets/pft_floor2.png
+    - assets/pft_floor3.png
     - assets/pft_floor1q1.PNG
     - assets/pft_floor1q2.PNG
     - assets/pft_floor1q3.PNG
@@ -77,7 +77,7 @@ flutter:
     - assets/pft_floor3q8.PNG
     - assets/pft_floor3q9.PNG
     - assets/pft_floor1q.PNG
-    - assets/pft_floor2q7.png
+    - assets/pft_floor2q7.PNG
     - assets/pft_floor3q.PNG
     - assets/lsu.PNG
 

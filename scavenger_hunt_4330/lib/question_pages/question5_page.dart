@@ -23,7 +23,7 @@ class Question5Page extends StatelessWidget {
           index: index,
           prompt: "What year was the Tau Beta Pi LSU chapter founded?",
           correctAnswer: "1936",
-          imagePath: 'assets/image5.jpg',
+          imagePath: 'assets/image5.png',
           onCorrect: () {
             onAnswer(index);
             Navigator.pushReplacement(
