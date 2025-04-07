@@ -160,7 +160,7 @@ class QuestionsHomePage extends StatelessWidget {
                   value: answeredCount / 10,
                   minHeight: 6,
                   backgroundColor: LSUColors.lightGold,
-                  valueColor: const AlwaysStoppedAnimation<Color>(LSUColors.gold),
+                  valueColor: const AlwaysStoppedAnimation<Color>(LSUColors.purple),
                 ),
               ],
             ),
@@ -200,7 +200,7 @@ class QuestionsHomePage extends StatelessWidget {
                               ? Icons.lock_open
                               : Icons.lock,
                       color: isAnswered
-                          ? LSUColors.gold
+                          ? LSUColors.purple
                           : LSUColors.mediumGray,
                     ),
                   ),
