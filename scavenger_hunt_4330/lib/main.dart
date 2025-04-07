@@ -21,6 +21,10 @@ class _ScavengerHuntAppState extends State<ScavengerHuntApp> {
   int? currentQuestionIndex;
 
   void setTabIndex(int index) {
+    if (index == 1) {
+      // Pop all routes on the Questions stack back to root
+      questionsNavigatorKey.currentState?.popUntil((route) => route.isFirst);
+    }
     setState(() {
       _currentTabIndex = index;
       if (_currentTabIndex == 1 && currentQuestionIndex == null) {
@@ -123,9 +127,9 @@ class _ScavengerHuntAppState extends State<ScavengerHuntApp> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentTabIndex,
-          selectedItemColor: LSUColors.gold, // Gold for selected items
-          unselectedItemColor: Colors.white, // White for unselected items
-          backgroundColor: LSUColors.purple, // Purple background for the bar
+          selectedItemColor: LSUColors.gold,
+          unselectedItemColor: Colors.white,
+          backgroundColor: LSUColors.purple,
           onTap: setTabIndex,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
