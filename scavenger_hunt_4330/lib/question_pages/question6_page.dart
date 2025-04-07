@@ -23,7 +23,7 @@ class Question6Page extends StatelessWidget {
           index: index,
           prompt: "What is the maximum occupancy at Panera Bread?",
           correctAnswer: "88",
-          imagePath: 'assets/image6.png',
+          imagePath: 'assets/image6-min.png',
           onCorrect: () {
             onAnswer(index);
             Navigator.pushReplacement(

@@ -23,7 +23,7 @@ class Question10Page extends StatelessWidget {
           index: index,
           prompt: "What year did Patrick F. Taylor pass away?",
           correctAnswer: "2004",
-          imagePath: 'assets/image10.png',
+          imagePath: 'assets/image10-min.png',
           onCorrect: () {
             onAnswer(index);
             Navigator.pushReplacement(

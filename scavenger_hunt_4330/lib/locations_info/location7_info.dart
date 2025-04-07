@@ -11,7 +11,7 @@ class Location7InfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return buildLocationInfoPage(
       context: context,
-      imagePath: 'assets/image7.png',
+      imagePath: 'assets/image7-min.png',
       text: "The OTP- term refers to a unique part of LSU's distillery research area, where students and faculty explore cutting-edge chemical engineering processes.",
       currentIndex: 6,
       answered: answered,

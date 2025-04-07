@@ -23,7 +23,7 @@ class Question1Page extends StatelessWidget {
           index: index,
           prompt: "What is the binary number on the left wall of the atrium?",
           correctAnswer: "101010010",
-          imagePath: 'assets/image1.png',
+          imagePath: 'assets/image1-min.png',
           onCorrect: () {
             onAnswer(index);
             Navigator.pushReplacement(

@@ -52,16 +52,16 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/image1.png
-    - assets/image2.png
-    - assets/image3.png
-    - assets/image4.png
-    - assets/image5.png
-    - assets/image6.png
-    - assets/image7.png
-    - assets/image8.png
-    - assets/image9.png
-    - assets/image10.png
+    - assets/image1-min.png
+    - assets/image2-min.png
+    - assets/image3-min.png
+    - assets/image4-min.png
+    - assets/image5-min.png
+    - assets/image6-min.png
+    - assets/image7-min.png
+    - assets/image8-min.png
+    - assets/image9-min.png
+    - assets/image10-min.png
     - assets/pft.png
     - assets/pft_floor1.png
     - assets/pft_floor2.png
@@ -79,7 +79,7 @@ flutter:
     - assets/pft_floor1q.PNG
     - assets/pft_floor2q7.PNG
     - assets/pft_floor3q.PNG
-    - assets/lsu.PNG
+    - assets/lsu-min.png
 
   fonts:
     - family: ProximaNova

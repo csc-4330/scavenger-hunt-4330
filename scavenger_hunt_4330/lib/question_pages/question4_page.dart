@@ -23,7 +23,7 @@ class Question4Page extends StatelessWidget {
           index: index,
           prompt: "How many wooden steps are there in the capstone stairs?",
           correctAnswer: "11",
-          imagePath: 'assets/image4.png',
+          imagePath: 'assets/image4-min.png',
           onCorrect: () {
             onAnswer(index);
             Navigator.pushReplacement(

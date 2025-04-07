@@ -11,7 +11,7 @@ class Location10InfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return buildLocationInfoPage(
       context: context,
-      imagePath: 'assets/image10.png',
+      imagePath: 'assets/image10-min.png',
       text: "Patrick F. Taylor, a key figure in the development of LSU's engineering school, was known for his generous contributions that helped shape the building and its programs into what they are today.",
       currentIndex: 9,
       answered: answered,

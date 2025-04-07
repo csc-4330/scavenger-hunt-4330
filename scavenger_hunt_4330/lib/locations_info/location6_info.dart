@@ -11,7 +11,7 @@ class Location6InfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return buildLocationInfoPage(
       context: context,
-      imagePath: 'assets/image6.png',
+      imagePath: 'assets/image6-min.png',
       text: "Panera Bread at LSU is a popular spot for students and faculty, offering a variety of delicious menu items. The commons outside provide an open space to enjoy food, unwind after class, or study with friends.",
       currentIndex: 5,
       answered: answered,

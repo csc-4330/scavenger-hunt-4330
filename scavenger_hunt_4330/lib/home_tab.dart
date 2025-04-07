@@ -36,7 +36,7 @@ class HomeTab extends StatelessWidget {
               
               // LSU logo, centered horizontally by the Column alignment
               Image.asset(
-                'assets/lsu.PNG',
+                'assets/lsu-min.png',
                 height: 100,
                 fit: BoxFit.contain,
               ),

@@ -23,7 +23,7 @@ class Question8Page extends StatelessWidget {
           index: index,
           prompt: "What is the Professor Shepherd's office room number?",
           correctAnswer: "3272W",
-          imagePath: 'assets/image8.png',
+          imagePath: 'assets/image8-min.png',
           onCorrect: () {
             onAnswer(index);
             Navigator.pushReplacement(

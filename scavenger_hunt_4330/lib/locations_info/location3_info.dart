@@ -11,7 +11,7 @@ class Location3InfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return buildLocationInfoPage(
       context: context,
-      imagePath: 'assets/image3.png',
+      imagePath: 'assets/image3-min.png',
       text: "The sponsor wall in Patrick F. Taylor Hall recognizes the contributions of companies and organizations that support LSU's engineering programs, with banners prominently displaying their names.",
       currentIndex: 2,
       answered: answered,

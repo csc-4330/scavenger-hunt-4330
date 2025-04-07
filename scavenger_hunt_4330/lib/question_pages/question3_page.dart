@@ -23,7 +23,7 @@ class Question3Page extends StatelessWidget {
           index: index,
           prompt: "How many purple sponsor banners are on the sponsor wall?",
           correctAnswer: "9",
-          imagePath: 'assets/image3.png',
+          imagePath: 'assets/image3-min.png',
           onCorrect: () {
             onAnswer(index);
             Navigator.pushReplacement(
