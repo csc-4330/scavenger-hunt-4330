@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/lsu_colors.dart'; // Ensure LSU Colors are defined here (purple, gold, etc.)
+import '/lsu_colors.dart'; 
 
 class QuestionPageTemplate extends StatefulWidget {
   final int index;
@@ -46,75 +46,75 @@ class _QuestionPageTemplateState extends State<QuestionPageTemplate> {
           "Question ${widget.index + 1}",
           style: TextStyle(
             fontFamily: 'ProximaNova', 
-            fontWeight: FontWeight.bold, // Bold the question number
-            fontSize: 20, // Adjust size if needed
+            fontWeight: FontWeight.bold, 
+            fontSize: 20, 
           ),
         ),
-        backgroundColor: LSUColors.purple, // AppBar uses LSU purple
-        foregroundColor: LSUColors.white, // White text for app bar
-        centerTitle: true, // Center the title
+        backgroundColor: LSUColors.purple,
+        foregroundColor: LSUColors.white, 
+        centerTitle: true,
       ),
       body: Container(
-        color: LSUColors.lightGold, // Set background to LSU Light Gold
-        width: double.infinity, // Ensure the width is fully stretched
-        height: double.infinity, // Ensure the height is fully stretched
+        color: LSUColors.lightGold, 
+        width: double.infinity, 
+        height: double.infinity, 
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0), // Added padding for the whole page
+          padding: const EdgeInsets.symmetric(horizontal: 16.0), 
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center, // Ensures the content is centered
+            crossAxisAlignment: CrossAxisAlignment.center, 
             children: [
               // Padding around the image for better spacing
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),  // Increased vertical padding
+                padding: const EdgeInsets.symmetric(vertical: 30),  
                 child: Container(
                   decoration: BoxDecoration(
-                    border: Border.all(color: LSUColors.purple, width: 4), // Purple bold border
-                    borderRadius: BorderRadius.zero, // Removing rounded corners from the image
+                    border: Border.all(color: LSUColors.purple, width: 4), 
+                    borderRadius: BorderRadius.zero, 
                   ),
                   child: Image.asset(
                     widget.imagePath,
-                    height: 350, // Increased image height for better visual impact
-                    fit: BoxFit.cover, // Ensure the image covers the area
-                    width: double.infinity, // Make the image take up the full width
+                    height: 350, 
+                    fit: BoxFit.cover, 
+                    width: double.infinity, 
                   ),
                 ),
               ),
               const SizedBox(height: 24),
-              // Wrap the question prompt text to avoid it getting too close to the screen sides
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Text(
                   widget.prompt,
                   style: TextStyle(
                     fontSize: 18,
-                    fontFamily: 'ProximaNova', // Using Proxima Nova font
-                    color: LSUColors.black, // Black text for contrast
-                    fontWeight: FontWeight.w600, // Made the text a bit bolder
+                    fontFamily: 'ProximaNova', 
+                    color: LSUColors.black, 
+                    fontWeight: FontWeight.w600, 
                   ),
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 24), // Space before the answer box
+              const SizedBox(height: 24), 
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12), // Added horizontal padding
+                padding: const EdgeInsets.symmetric(horizontal: 12), 
                 child: TextField(
                   controller: _controller,
                   decoration: InputDecoration(
                     hintText: "Enter your answer",
-                    hintStyle: TextStyle(color: LSUColors.black.withOpacity(0.6)), // Light hint text color
+                    hintStyle: TextStyle(color: LSUColors.black.withOpacity(0.6)),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8), // Rounded corners for input field
-                      borderSide: BorderSide(color: LSUColors.purple, width: 2), // Purple border
+                      borderRadius: BorderRadius.circular(8), 
+                      borderSide: BorderSide(color: LSUColors.purple, width: 2),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 24), // Increased space between the answer box and the submit button
+              const SizedBox(height: 24), 
               ElevatedButton(
                 onPressed: _submit,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: LSUColors.purple, // LSU purple button
-                  foregroundColor: LSUColors.white, // White text for button
+                  backgroundColor: LSUColors.purple,
+                  foregroundColor: LSUColors.white, 
                   padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                 ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'lsu_colors.dart'; // Ensure LSU Colors (purple, gold, etc.) are defined here
+import 'lsu_colors.dart'; 
 
 class HomeTab extends StatelessWidget {
   final VoidCallback onStart;
@@ -31,7 +31,7 @@ class HomeTab extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Extra space above the LSU logo
+              
               const SizedBox(height: 0),
               
               // LSU logo, centered horizontally by the Column alignment
@@ -41,7 +41,7 @@ class HomeTab extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
               
-              // Extra space below the LSU logo (equal to above to visually center between top and text)
+              // Extra space below the LSU logo 
               const SizedBox(height: 80),
 
               // Headline text

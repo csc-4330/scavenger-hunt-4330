@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/lsu_colors.dart'; // Ensure LSU Colors are defined here (purple, gold, etc.)
+import '/lsu_colors.dart'; 
 import '/question_pages/question1_page.dart';
 import '/question_pages/question2_page.dart';
 import '/question_pages/question3_page.dart';
@@ -24,29 +24,29 @@ Widget buildLocationInfoPage({
       title: const Text(
         "Location Info",
         style: TextStyle(
-          fontWeight: FontWeight.bold, // Make the title bold
+          fontWeight: FontWeight.bold, 
         ),
       ),
-      backgroundColor: LSUColors.purple, // LSU purple app bar
-      centerTitle: true, // Center the title in the AppBar
+      backgroundColor: LSUColors.purple,
+      centerTitle: true, 
     ),
     body: Container(
-      color: LSUColors.lightGold, // LSU Light Gold background
+      color: LSUColors.lightGold, 
       child: Column(
-        mainAxisSize: MainAxisSize.max, // Ensure Column expands to fill available space
+        mainAxisSize: MainAxisSize.max, 
         children: [
           // Center the image properly with more padding on the sides
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0), // Adjust padding
+            padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0), 
             child: Container(
               width: double.infinity,
               height: 300,
               decoration: BoxDecoration(
-                border: Border.all(color: LSUColors.purple, width: 4), // Bold purple border
-                // No border radius (removing rounded corners)
+                border: Border.all(color: LSUColors.purple, width: 4), 
+                // No border radius 
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.zero, // Ensuring no rounding of corners
+                borderRadius: BorderRadius.zero, 
                 child: Image.asset(
                   imagePath,
                   fit: BoxFit.cover,
@@ -54,7 +54,7 @@ Widget buildLocationInfoPage({
               ),
             ),
           ),
-          const SizedBox(height: 8), // Reduced space between image and text
+          const SizedBox(height: 8), 
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -62,23 +62,23 @@ Widget buildLocationInfoPage({
                 children: [
                   // Text container with purple border and light gold background
                   Container(
-                    padding: const EdgeInsets.all(12), // Reduced padding inside the text container
+                    padding: const EdgeInsets.all(12), 
                     decoration: BoxDecoration(
                       color: LSUColors.white,
-                      border: Border.all(color: LSUColors.purple, width: 2), // Purple border
-                      borderRadius: BorderRadius.circular(12), // Rounded corners for the text box
+                      border: Border.all(color: LSUColors.purple, width: 2), 
+                      borderRadius: BorderRadius.circular(12), 
                     ),
                     child: Text(
                       text,
                       style: TextStyle(
-                        fontSize: 15, // Reduced font size for the text
-                        fontWeight: FontWeight.normal, // Regular text weight
-                        color: LSUColors.corporatePurple, // Changed text color to purple
+                        fontSize: 15, 
+                        fontWeight: FontWeight.normal, 
+                        color: LSUColors.corporatePurple, 
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  const SizedBox(height: 32), // Space before the button
+                  const SizedBox(height: 32), 
                   if (answered.contains(false)) 
                     ElevatedButton(
                       onPressed: () {
@@ -93,15 +93,15 @@ Widget buildLocationInfoPage({
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: LSUColors.purple, // LSU purple button
-                        foregroundColor: LSUColors.white, // White text on button
+                        backgroundColor: LSUColors.purple, 
+                        foregroundColor: LSUColors.white, 
                         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                       ),
                       child: const Text(
                         "Next Question",
                         style: TextStyle(
-                          fontFamily: 'ProximaNova', // Using Proxima Nova font
+                          fontFamily: 'ProximaNova', 
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),

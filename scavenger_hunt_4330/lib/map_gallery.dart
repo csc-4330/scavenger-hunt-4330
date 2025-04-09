@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'lsu_colors.dart'; // Ensure LSU Colors are defined here (purple, gold, etc.)
+import 'lsu_colors.dart'; 
 
 class MapGallery extends StatelessWidget {
   const MapGallery({super.key});
@@ -22,10 +22,10 @@ class MapGallery extends StatelessWidget {
             fontSize: 24,
           ),
         ),
-        backgroundColor: LSUColors.purple, // AppBar uses LSU purple
+        backgroundColor: LSUColors.purple, 
       ),
       body: Container(
-        color: LSUColors.lightGold, // Set background to LSU Light Gold
+        color: LSUColors.lightGold, 
         child: ListView.builder(
           itemCount: mapImages.length,
           itemBuilder: (context, index) {
@@ -40,11 +40,11 @@ class MapGallery extends StatelessWidget {
                         fontFamily: 'ProximaNova',
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: LSUColors.purple, // Text color matching the brand
+                        color: LSUColors.purple, 
                       ),
                     ),
                     const SizedBox(height: 10),
-                    _FancyZoomableImage(imagePath: mapImages[index]), // Using the improved zoom widget
+                    _FancyZoomableImage(imagePath: mapImages[index]), 
                   ],
                 ),
               ),
@@ -72,23 +72,23 @@ class _FancyZoomableImageState extends State<_FancyZoomableImage> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onDoubleTap: _toggleZoom, // Double-tap to zoom in/out
+      onDoubleTap: _toggleZoom, 
       child: InteractiveViewer(
         transformationController: _controller,
-        panEnabled: true, // Allow panning (dragging the image)
-        scaleEnabled: true, // Enable pinch-to-zoom
-        minScale: 1.0, // Minimum scale (default)
-        maxScale: 4.0, // Maximum scale (zoom level)
+        panEnabled: true, 
+        scaleEnabled: true, 
+        minScale: 1.0, 
+        maxScale: 4.0, 
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: LSUColors.purple, // Purple border for image outline
-              width: 3.0, // 3px width for the outline
+              color: LSUColors.purple, 
+              width: 3.0, 
             ),
-            borderRadius: BorderRadius.circular(16), // Rounded corners
+            borderRadius: BorderRadius.circular(16), 
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2), // Subtle shadow
+                color: Colors.black.withOpacity(0.2), 
                 blurRadius: 8.0,
                 spreadRadius: 1.0,
                 offset: const Offset(0, 4),
@@ -96,7 +96,7 @@ class _FancyZoomableImageState extends State<_FancyZoomableImage> {
             ],
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(16), // Rounded corners for image itself
+            borderRadius: BorderRadius.circular(16), 
             child: Image.asset(widget.imagePath),
           ),
         ),
@@ -107,9 +107,9 @@ class _FancyZoomableImageState extends State<_FancyZoomableImage> {
   // Toggle between zoomed and normal state
   void _toggleZoom() {
     if (_zoomed) {
-      _controller.value = Matrix4.identity(); // Reset to normal state
+      _controller.value = Matrix4.identity(); 
     } else {
-      _controller.value = Matrix4.identity()..scale(2.0); // Zoom in at 2x scale
+      _controller.value = Matrix4.identity()..scale(2.0);
     }
     setState(() {
       _zoomed = !_zoomed;

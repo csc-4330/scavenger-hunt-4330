@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/lsu_colors.dart'; // Ensure LSU Colors are defined here (purple, gold, etc.)
+import '/lsu_colors.dart';
 
 class QuestionPageTemplate extends StatefulWidget {
   final int index;
@@ -43,32 +43,32 @@ class _QuestionPageTemplateState extends State<QuestionPageTemplate> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Question ${widget.index + 1}", style: const TextStyle(fontFamily: 'ProximaNova')),
-        backgroundColor: LSUColors.purple, // AppBar uses LSU purple
-        foregroundColor: LSUColors.white, // White text for app bar
+        backgroundColor: LSUColors.purple, 
+        foregroundColor: LSUColors.white, 
       ),
       body: Container(
-        color: LSUColors.lightGold, // Set background to LSU Light Gold
-        width: double.infinity, // Ensure the width is fully stretched
-        height: double.infinity, // Ensure the height is fully stretched
+        color: LSUColors.lightGold, 
+        width: double.infinity, 
+        height: double.infinity, 
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center, // Ensures the content is centered
+            crossAxisAlignment: CrossAxisAlignment.center, 
             children: [
               // Padding around the image for better spacing
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),  // Increased vertical padding
+                padding: const EdgeInsets.symmetric(vertical: 30),  
                 child: Container(
                   decoration: BoxDecoration(
-                    border: Border.all(color: LSUColors.purple, width: 4), // Purple bold border
-                    borderRadius: BorderRadius.circular(12), // Rounded corners
+                    border: Border.all(color: LSUColors.purple, width: 4), 
+                    borderRadius: BorderRadius.circular(12), 
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12), // Ensure image respects the border radius
+                    borderRadius: BorderRadius.circular(12), 
                     child: Image.asset(
                       widget.imagePath,
-                      height: 350, // Increased image height for better visual impact
-                      fit: BoxFit.cover, // Ensure the image covers the area
-                      width: double.infinity, // Make the image take up the full width
+                      height: 350, 
+                      fit: BoxFit.cover, 
+                      width: double.infinity, 
                     ),
                   ),
                 ),
@@ -78,22 +78,22 @@ class _QuestionPageTemplateState extends State<QuestionPageTemplate> {
                 widget.prompt,
                 style: const TextStyle(
                   fontSize: 18,
-                  fontFamily: 'ProximaNova', // Using Proxima Nova font
-                  color: LSUColors.black, // Black text for contrast
+                  fontFamily: 'ProximaNova', 
+                  color: LSUColors.black, 
                 ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12), // Added horizontal padding
+                padding: const EdgeInsets.symmetric(horizontal: 12), 
                 child: TextField(
                   controller: _controller,
                   decoration: InputDecoration(
                     hintText: "Enter your answer",
-                    hintStyle: TextStyle(color: LSUColors.black.withOpacity(0.6)), // Light hint text color
+                    hintStyle: TextStyle(color: LSUColors.black.withOpacity(0.6)),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8), // Rounded corners for input field
-                      borderSide: BorderSide(color: LSUColors.purple, width: 2), // Purple border
+                      borderRadius: BorderRadius.circular(8), 
+                      borderSide: BorderSide(color: LSUColors.purple, width: 2),
                     ),
                   ),
                 ),
@@ -102,8 +102,8 @@ class _QuestionPageTemplateState extends State<QuestionPageTemplate> {
               ElevatedButton(
                 onPressed: _submit,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: LSUColors.purple, // LSU purple button
-                  foregroundColor: LSUColors.white, // White text for button
+                  backgroundColor: LSUColors.purple,
+                  foregroundColor: LSUColors.white, 
                   padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                 ),
